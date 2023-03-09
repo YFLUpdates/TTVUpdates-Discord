@@ -3,7 +3,12 @@ import express from "express";
 import dotenv from "dotenv";
 import { promises as fs } from "fs";
 
+import getPoints from "./requests/getPoints.js";
+import rollDice from "./functions/rollDice.js";
+import multiplyDice from "./functions/multiplyDice.js";
 import middleware from "./authz/docchi-server.js";
+import gambleUpdate from "./requests/gambleUpdate.js";
+import pointsCom from "./command/points.js";
 
 dotenv.config();
 
@@ -17,6 +22,8 @@ const client = new Client({
 const app = express();
 const PORT = process.env.PORT || 3000;
 const channel = "1071137965859930205";
+const gambleChannel = "1083102450472468480";
+let cooldown = 0;
 let strefy = JSON.parse(await fs.readFile("./strefy.json", "UTF-8"));
 let members = JSON.parse(await fs.readFile("./members.json", "UTF-8"));
 
@@ -103,6 +110,77 @@ async function getMembers() {
 }
 
 client.on("messageCreate", async (msg) => {
+  const args = msg.content.slice(1).split(' ');
+	const command = args.shift().toLowerCase();
+  const argumentClean = args[0] ? (args[0].replaceAll("@", "").toLowerCase()):(null)
+
+  if(["dice", "kosci"].includes(command)){
+    if(msg.channelId !== gambleChannel){
+      return;
+    }
+
+    if (cooldown > (Date.now() - 2000)) {
+      return;
+    }
+    cooldown = Date.now();
+
+    const discordID = msg.author.id;
+    const points = await getPoints(discordID, "adrian1g__");
+
+    if(!argumentClean){
+        return msg.channel.send(`<@${discordID}>, zapomniałeś/aś o kwocie `); 
+    }
+
+    if(Number(argumentClean) > 5000 || Number(argumentClean) <= 0 || isNaN(argumentClean)){
+        return msg.channel.send(`<@${discordID}>, maksymalnie można obstawić 5000 punktów `); 
+    }
+
+    if(points === null || points.points === null){
+      return msg.channel.send("<@"+ discordID +"> najprawdopodobniej nie połączyłeś bota ze swoim kontem `!connectdc "+discordID+"` na kanale adrian1g__");
+    }
+
+    if(Number(argumentClean) > points.points){
+        return msg.channel.send(`<@${discordID}> nie masz tylu punktów aha `);
+    }
+
+    const dice1 = await rollDice();
+    const dice2 = await rollDice();
+    const dice3 = await rollDice();
+    const betPoints = Number(argumentClean);
+    const multiplyAmount = multiplyDice(dice1, dice2, dice3);
+
+    if(multiplyAmount === null){
+        const updatePoints = await gambleUpdate("adrian1g__", `-${betPoints}`, points.user_login)
+
+        if(updatePoints === null){
+            return msg.channel.send( `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów <:aha:1014651386505465896> `);
+        }
+
+        return msg.channel.send(`<@${discordID}> przegrałeś/aś wszystko <:jasperSmiech:1026122842976309402> - 🎲${dice1} 🎲${dice2} 🎲${dice3}`);
+    }
+
+    const winAmount = (betPoints * multiplyAmount);
+    const updatePoints = await gambleUpdate("adrian1g__", `+${winAmount - betPoints}`, points.user_login)
+
+    if(updatePoints === null){
+        return msg.channel.send(`<@${discordID}> coś się rozjebało przy aktualizowaniu punktów <:aha:1014651386505465896> `);
+    }
+
+    if(multiplyAmount === 66){
+        return msg.channel.send( `<@${discordID}> szatańska wygrana ${winAmount} <:okurwa:1016741160779268166> FIRE x66 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `);
+    }
+
+    if(multiplyAmount === 33){
+        return msg.channel.send(`<@${discordID}> szczęśliwa trójka ${winAmount} PartyKirby 🍀 🍀 x33 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `);
+    }
+
+    return msg.channel.send(`<@${discordID}> wygrałeś/aś ${winAmount} punktów <:okurwa:1016741160779268166> - 🎲${dice1} 🎲${dice2} 🎲${dice3}`);
+  }else if(["yflpoints", "punkty", "points"].includes(command)){
+    const commands = await pointsCom("adrian1g__", msg.author.id, argumentClean, args);
+
+    msg.channel.send(commands);
+  }
+
   if(msg.channelId === "1075498439435104316" && msg.author.id !== "1071108766843556020"){
     if(Array.from(msg.attachments).length === 0){
       msg.delete();
@@ -131,10 +209,7 @@ client.on("messageCreate", async (msg) => {
       .get(channel)
       .send({ embeds: [embed] })
       .catch(console.error);
-  } else if (
-    msg.channelId === "1069641216637014139" &&
-    msg.content === "!czlonkowie"
-  ) {
+  } else if (msg.channelId === "1069641216637014139" &&msg.content === "!czlonkowie") {
     const embed = new EmbedBuilder()
       .setTitle("Członkowie")
       .setImage(
