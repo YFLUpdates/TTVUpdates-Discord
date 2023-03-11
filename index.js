@@ -179,21 +179,6 @@ client.on("messageCreate", async (msg) => {
     const commands = await pointsCom("adrian1g__", msg.author.id, argumentClean, args);
 
     msg.channel.send(commands);
-  }
-
-  if(msg.channelId === "1075498439435104316" && msg.author.id !== "1071108766843556020"){
-    if(Array.from(msg.attachments).length === 0){
-      msg.delete();
-
-      msg.channel.send(`» To nie jest zdjęcie <@${msg.author.id}>`).then(msg => setTimeout(() => msg.delete(), 5000));
-
-      return;
-    }
-
-    msg.channel.send(`» <@${msg.author.id}>, twój zrzut ekranu oczekuje na weryfikację moderacji. <@&1006911102002671625> <@&1006910777728454686>`);
-
-    return;
-
   }else if (msg.channelId === channel && Array.from(msg.attachments).length > 0) {
     await saveStrefa(msg.author.id, msg.author.username);
 
@@ -209,7 +194,7 @@ client.on("messageCreate", async (msg) => {
       .get(channel)
       .send({ embeds: [embed] })
       .catch(console.error);
-  } else if (msg.channelId === "1069641216637014139" &&msg.content === "!czlonkowie") {
+  } else if (msg.channelId === "1069641216637014139" && ["czlonkowie"].includes(command)) {
     const embed = new EmbedBuilder()
       .setTitle("Członkowie")
       .setImage(
@@ -226,6 +211,38 @@ client.on("messageCreate", async (msg) => {
     const d = messages.filter((msg) => msg.embeds.length > 0).first();
 
     d.edit({ embeds: [embed] });
+  } else if (["zglos"].includes(command)) {
+    const senderID = msg.author.id;
+
+    if(!args[0] || Number(args[0]) <= 0 || isNaN(args[0])){
+      return msg.channel.send(`<@${senderID}>, zapomniałeś/aś o kordach X `);
+    }
+
+    if(!args[1] || Number(args[1]) <= 0 || isNaN(args[1])){
+      return msg.channel.send(`<@${senderID}>, zapomniałeś/aś o kordach Y `);
+    }
+
+    if(!args[2] || Number(args[2]) <= 0 || isNaN(args[2])){
+      return msg.channel.send(`<@${senderID}>, zapomniałeś/aś o kordach Z `);
+    }
+
+    const embed = new EmbedBuilder()
+      .setTitle("Nowe zgloszenie cuboida")
+      .setImage(
+        "https://cdn.discordapp.com/attachments/721911008213598238/1083879111388303360/Newsy_2.0.png"
+      )
+      .setColor(8086271)
+      .setThumbnail('https://i.imgur.com/qzzZEVX.png')
+      .addFields(
+        { name: 'Kordy cuboida', value: `${args[0]}, ${args[1]}, ${args[2]}` },
+        { name: 'Komenda', value: `/tp ${args[0]} ${args[1]} ${args[2]}` },
+        { name: 'Zgłaszający', value: `<@${senderID}>`},
+      )
+
+    client.channels.cache
+      .get("1083775118209187910")
+      .send({ embeds: [embed] })
+      .catch(console.error);
   }
 });
 
