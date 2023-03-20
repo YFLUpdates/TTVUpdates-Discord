@@ -9,6 +9,13 @@ import rollDice from "./functions/rollDice.js";
 import { slotsInfo } from "./functions/slots/data/slotsData.js";
 import { runSlots } from "./functions/slots/slots.js";
 import gambleUpdate from "./requests/gambleUpdate.js";
+import {
+  aha,
+  fire,
+  jasperAktywacja,
+  jasperSmiech,
+  okurwa
+} from "./functions/slots/data/discordEmotes.js";
 
 import getPoints from "./requests/getPoints.js";
 
@@ -156,7 +163,7 @@ client.on("messageCreate", async (msg) => {
     }
 
     if (Number(argumentClean) > points.points) {
-      return msg.channel.send(`<@${discordID}> nie masz tylu punktów aha `);
+      return msg.channel.send(`<@${discordID}> nie masz tylu punktów ${aha} `);
     }
 
     const dice1 = await rollDice();
@@ -174,12 +181,12 @@ client.on("messageCreate", async (msg) => {
 
       if (updatePoints === null) {
         return msg.channel.send(
-          `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów <:aha:1014651386505465896> `
+          `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów ${aha}`
         );
       }
 
       return msg.channel.send(
-        `<@${discordID}> przegrałeś/aś wszystko <:jasperSmiech:1026122842976309402> - 🎲${dice1} 🎲${dice2} 🎲${dice3}`
+        `<@${discordID}> przegrałeś/aś wszystko ${jasperSmiech} - 🎲${dice1} 🎲${dice2} 🎲${dice3}`
       );
     }
 
@@ -192,24 +199,24 @@ client.on("messageCreate", async (msg) => {
 
     if (updatePoints === null) {
       return msg.channel.send(
-        `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów <:aha:1014651386505465896> `
+        `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów ${aha} `
       );
     }
 
     if (multiplyAmount === 66) {
       return msg.channel.send(
-        `<@${discordID}> szatańska wygrana ${winAmount} <:okurwa:1016741160779268166> FIRE x66 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `
+        `<@${discordID}> szatańska wygrana ${winAmount} ${okurwa} ${fire} x66 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `
       );
     }
 
     if (multiplyAmount === 33) {
       return msg.channel.send(
-        `<@${discordID}> szczęśliwa trójka ${winAmount} PartyKirby 🍀 🍀 x33 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `
+        `<@${discordID}> szczęśliwa trójka ${winAmount} ${jasperAktywacja} 🍀 🍀 x33 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `
       );
     }
 
     return msg.channel.send(
-      `<@${discordID}> wygrałeś/aś ${winAmount} punktów <:okurwa:1016741160779268166> - 🎲${dice1} 🎲${dice2} 🎲${dice3}`
+      `<@${discordID}> wygrałeś/aś ${winAmount} punktów ${okurwa} - 🎲${dice1} 🎲${dice2} 🎲${dice3}`
     );
   } else if (["slot", "slots", "slotsy"].includes(command)) {
     const discordID = msg.author.id;
