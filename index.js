@@ -278,7 +278,7 @@ client.on("messageCreate", async (msg) => {
 
     if (updatePoints === null) {
       return msg.channel.send(
-        `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów <:aha:1014651386505465896> `
+        `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów ${aha}`
       );
     }
 
@@ -291,9 +291,7 @@ client.on("messageCreate", async (msg) => {
       args
     );
     msg.channel.send(commands);
-  } else if (
-    msg.channelId === channel &&
-    Array.from(msg.attachments).length > 0
+  } else if (msg.channelId === channel && Array.from(msg.attachments).length > 0
   ) {
     await saveStrefa(msg.author.id, msg.author.username);
 
@@ -309,9 +307,7 @@ client.on("messageCreate", async (msg) => {
       .get(channel)
       .send({ embeds: [embed] })
       .catch(console.error);
-  } else if (
-    msg.channelId === "1069641216637014139" &&
-    ["czlonkowie"].includes(command)
+  } else if (msg.channelId === "1069641216637014139" && ["czlonkowie"].includes(command)
   ) {
     const embed = new EmbedBuilder()
       .setTitle("Członkowie")
@@ -361,6 +357,53 @@ client.on("messageCreate", async (msg) => {
       .get("1083775118209187910")
       .send({ embeds: [embed] })
       .catch(console.error);
+  }else if (["buy"].includes(command)) {
+    const discordID = msg.author.id;
+
+    if (!args[0] || args[0] !== "hazardzista") {
+      return msg.channel.send(`<@${discordID}>, nie znany produkt ${aha}  - dostępne: hazardzista(1mln)`);
+    }
+
+    const points = await getPoints(discordID, "adrian1g__");
+
+    if (points === null || points.points === null) {
+      return msg.channel.send(
+        "<@" +
+        discordID +
+        "> najprawdopodobniej nie połączyłeś bota ze swoim kontem `!connectdc " +
+        discordID +
+        "` na kanale adrian1g__"
+      );
+    }
+
+    if (1000000 > points.points) {
+      return msg.channel.send(`<@${discordID}> nie masz wystarczającej liczby punktów ${aha}`);
+    }
+
+    if(msg.member.roles.cache.some(r => r.name === "Hazardzista")){
+      return msg.channel.send(`<@${discordID}> kupiłeś już tą role ${aha}`);
+    }
+
+    const updatePoints = await gambleUpdate(
+      "adrian1g__",
+      `-1000000`,
+      points.user_login
+    );
+
+    if (updatePoints === null) {
+      return msg.channel.send(
+        `<@${discordID}> coś się rozjebało przy aktualizowaniu punktów ${aha}`
+      );
+    }
+
+    let role = msg.guild.roles.cache.find(r => r.name === "Hazardzista");
+    msg.member.roles.add(role).catch(console.error);
+
+    return msg.channel.send(
+      `<@${discordID}> gratulacje zakupu rangi Hazardzista ${okurwa} ${fire}`
+    );
+
+
   }
 });
 
