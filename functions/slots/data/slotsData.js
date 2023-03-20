@@ -132,61 +132,73 @@ export const slotsReelThree = [
 ];
 
 export const winningCombinations = [
+  //0.008%
   {
     combination: [seven, seven, seven],
     multiplier: 777,
     message: `TRZY SIÓDEMKI ${fire} 🎰 !!MAXWIN!! 🎰 ${fire} `,
   },
-  {
-    combination: [bar, bar, bar],
-    multiplier: 333,
-    message: `TRZY CZEKOLADKI ${okurwa} ${okurwa} `,
-  },
+  //0.03%
   {
     combination: [melon, melon, bar],
-    multiplier: 250,
-    message: `dwa arbuziki i czekoladka ${jasperAktywacja} `,
+    multiplier: 333,
+    message: `DWA ARBUZIKI I CZEKOLADKA ${fire} ${jasperAktywacja} `,
   },
+  //0.04%
   {
     combination: [bell, bell, bar],
-    multiplier: 200,
-    message: `dwa dzwoneczki i czekoladka ${oho} `,
+    multiplier: 220,
+    message: `DWA DZWONECZKI I CZEKOLADKA ${oho} ${jasperAktywacja} `,
   },
+  //0.05%
+  {
+    combination: [bar, bar, bar],
+    multiplier: 180,
+    message: `TRZY CZEKOLADKI ${okurwa} `,
+  },
+  //0.07
   {
     combination: [melon, melon, melon],
-    multiplier: 150,
+    multiplier: 130,
     message: `trzy arbuziki ${jasperBoobsy} `,
   },
+  //0.18%
   {
     combination: [orange, orange, bar],
-    multiplier: 72,
+    multiplier: 50,
     message: `dwie pomarańczki i czekoladka ${oho} ${hm} `,
   },
+  //0.21%
   {
     combination: [banana, banana, bar],
-    multiplier: 48,
+    multiplier: 42,
     message: `dwa bananki i czekoladka ${oho} ${oho} `,
   },
+  //0.34%
   {
     combination: [bell, bell, bell],
-    multiplier: 32,
+    multiplier: 28,
     message: `trzy dzwoneczki ${hm} `,
   },
+  //0.5%
   {
     combination: [orange, orange, orange],
-    multiplier: 18,
+    multiplier: 15,
     message: `trzy pomarańcze ${jasperAktywacja} `,
   },
+  //0.87%
   {
     combination: [banana, banana, banana],
-    multiplier: 12,
+    multiplier: 10,
     message: `trzy banany ${jasperAktywacja} `,
   },
+  //2.5%
   {
     combination: [cherry, cherry],
     multiplier: 6,
-    message: `dwie wisieńki ${oho} `,
+    message: `dwie wisienki ${oho} `,
   },
+  //10%
   {
     combination: [cherry],
     multiplier: 3,
