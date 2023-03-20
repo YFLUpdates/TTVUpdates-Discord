@@ -226,7 +226,7 @@ client.on("messageCreate", async (msg) => {
       return;
     }
 
-    if (cooldownSpecial > Date.now() - 5000) {
+    if (cooldownSpecial > Date.now() - 2000) {
       return;
     }
     cooldownSpecial = Date.now();
