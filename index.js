@@ -33,6 +33,7 @@ const PORT = process.env.PORT || 3000;
 const channel = "1071137965859930205";
 const gambleChannel = "1083102450472468480";
 let cooldown = 0;
+let cooldownSpecial = 0;
 let strefy = JSON.parse(await fs.readFile("./strefy.json", "UTF-8"));
 let members = JSON.parse(await fs.readFile("./members.json", "UTF-8"));
 
@@ -225,10 +226,10 @@ client.on("messageCreate", async (msg) => {
       return;
     }
 
-    if (cooldown > Date.now() - 2000) {
+    if (cooldownSpecial > Date.now() - 5000) {
       return;
     }
-    cooldown = Date.now();
+    cooldownSpecial = Date.now();
 
     if (argumentClean === "info") {
       return msg.channel.send(`<@${discordID}>, ${slotsInfo}`);
@@ -284,6 +285,11 @@ client.on("messageCreate", async (msg) => {
 
     return msg.channel.send(`<@${discordID}>, ${outcome.message}`);
   } else if (["yflpoints", "punkty", "points"].includes(command)) {
+
+    if (msg.channelId !== gambleChannel) {
+      return;
+    }
+
     const commands = await pointsCom(
       "adrian1g__",
       msg.author.id,
@@ -358,6 +364,11 @@ client.on("messageCreate", async (msg) => {
       .send({ embeds: [embed] })
       .catch(console.error);
   }else if (["buy"].includes(command)) {
+    
+    if (msg.channelId !== gambleChannel) {
+      return;
+    }
+
     const discordID = msg.author.id;
 
     if (!args[0] || args[0] !== "hazardzista") {
