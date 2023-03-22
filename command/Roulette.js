@@ -1,7 +1,7 @@
 import getPoints from "../requests/getPoints.js";
 import {rollColor, multiplyColor, emojiColor } from "../functions/roulette/index.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
-import { beka, fire, jasperBoobsy, okurwa } from "../functions/slots/data/discordEmotes.js";
+import { beka, fire, jasperBoobsy, okurwa, aha } from "../functions/slots/data/discordEmotes.js";
 
 export default async function commandRoulette(msg, argumentClean, args){
     const gambleChannel = "1083102450472468480";
@@ -15,6 +15,10 @@ export default async function commandRoulette(msg, argumentClean, args){
 
     if (argumentClean === "info") {
         return `<@${discordID}>, prosta ruletka z pięcioma kolorami **->**\nJeśli postawisz na czarny lub czerwony - Wygrywasz **x2**\nJeśli postawisz na niebieski - Wygrywasz **x3**\nJeśli postawisz na pomarańczowy - Wygrywasz **x5**\nJeśli postawisz na zielony - Wygrywasz **x14**\nAutor ten pierwszy i najlepszy programista - xan ${jasperBoobsy}`;
+    }
+
+    if (argumentClean === "procenty") {
+        return `<@${discordID}>\nCzarny, Czerwony - **38%**\nNiebieski - **22%**\nPomarańczowy - **5%**\nZielony - **5%**`;
     }
 
     if(!argumentClean || !["red", "black", "green", "blue", "orange"].includes(argumentClean)){

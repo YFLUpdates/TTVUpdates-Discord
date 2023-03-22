@@ -16,6 +16,10 @@ export default async function commandDice(msg, argumentClean){
     if (argumentClean === "info") {
       return `<@${discordID}>, proste kosteczki działające na zasadzie podzielności **->**\nJeśli wynik trzech kostek jest podzielny przez dwa - Wygrywasz **x2**\nJeśli trafisz trzy szóstki - Wygrywasz **x66**\nJeśli trafisz trzy trójki - Wygrywasz **x33**\nAutor ten pierwszy i najlepszy programista - xan ${jasperBoobsy}`;
     }
+
+    if (argumentClean === "procenty") {
+        return `<@${discordID}>\nWygrana x2 - **25%**\nWygrana x33 - **0.46%**\nWygrana x66 - **0.46%**`;
+    }
       const points = await getPoints(discordID, "adrian1g__");
   
       if (!argumentClean) {

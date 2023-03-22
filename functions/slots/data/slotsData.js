@@ -230,3 +230,51 @@ export const losingMessages = [
 ];
 
 export const slotsInfo = `Proste slotsy na 3 rolki autorstwa lepszego programisty - ziomiwan ${hm}. Maksymalny możliwy win - x777. Najprawdopodobniej bedziecie na - jak w prawdziwych slotsach ${hehe}. Nie ponosze odpowiedzialności za stracone punkty ${aok}. Wszystkie szanse na wygrana otestowane i zatwierdzone przez największa hazardzistke - <@632307504063447040> także wszelkie zażalenia odnośnie dropu proszę kierować do niej ${aok}.`;
+
+export const slotsPercentage = `siedem, siedem, siedem, 
+mnożnik: x777
+szansa: 0.008%
+
+arbuz, arbuz, czekolada 
+mnożnik: x333
+szansa: 0.03%
+
+dzwonek, dzwonek, czekolada
+Mnoznik: x220
+szansa: 0.04%
+
+czekolada, czekolada, czekolada
+mnoznik: x180
+szansa: 0.05%
+
+arbuz, arbuz, arbuz
+mnoznik: x130
+szansa: 0.07%
+
+pomarancz, pomarancz, czekolada
+mnoznik: x50
+szansa: 0.18%
+
+banan, banan, czekolada
+mnoznik: x42
+szansa: 0.21%
+
+dzwonek, dzwonek, dzwonek
+mnoznik: x28
+szansa: 0.34%
+
+pomarancz, pomarancz, pomarancz
+mnoznik: x15
+szansa: 0.5%
+
+banan, banan, banan
+mnoznik: x10
+szansa: 1%
+
+wisnia, wisnia
+mnoznik: x6
+szansa: 2.5%
+
+wisnia
+mnoznik: x3
+szansa: 10%`

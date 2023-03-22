@@ -1,5 +1,5 @@
 import { aha } from "../functions/slots/data/discordEmotes.js";
-import { slotsInfo } from "../functions/slots/data/slotsData.js";
+import { slotsInfo, slotsPercentage } from "../functions/slots/data/slotsData.js";
 import { runSlots } from "../functions/slots/slots.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import getPoints from "../requests/getPoints.js";
@@ -15,6 +15,9 @@ export default async function commandSlots(msg, argumentClean){
 
     if (argumentClean === "info") {
       return `<@${discordID}>, ${slotsInfo}`;
+    }
+    if (argumentClean === "procenty") {
+      return `<@${discordID}>, ${slotsPercentage}`;
     }
 
     const points = await getPoints(discordID, "adrian1g__");
