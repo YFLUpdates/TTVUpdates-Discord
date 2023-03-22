@@ -1,22 +1,26 @@
 {
-    "name": "notrp-bot",
-    "version": "1.0.1",
+    "name": "ttvupdates-discord",
+    "version": "2.0.0",
     "description": "Discord bot",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/YFLUpdates/notrp-bot.git"
+        "url": "git+https://github.com/YFLUpdates/ttvupdates-discord.git"
     },
     "type": "module",
     "scripts": {
         "start": "node index.js"
     },
     "bugs": {
-        "url": "https://github.com/YFLUpdates/notrp-bot/issues"
+        "url": "https://github.com/YFLUpdates/ttvupdates-discord/issues"
     },
-    "homepage": "https://github.com/YFLUpdates/notrp-bot#readme",
+    "homepage": "https://github.com/YFLUpdates/ttvupdates-discord#readme",
     "keywords": [
-        "notrp"
+        "discord",
+        "gamble",
+        "dice",
+        "ttv",
+        "twitch"
     ],
     "author": "3xanax",
     "license": "MIT",

@@ -1,13 +1,6 @@
 import sha256 from "sha256";
 import * as math from "mathjs";
-
-function randomStr(len, arr) {
-    let ans = "";
-    for (var i = len; i > 0; i--) {
-      ans += arr[Math.floor(Math.random() * arr.length)];
-    }
-    return ans;
-}
+import randomStr from "./randomStr.js";
 
 export default async function rollDice() {
   const hash = randomStr(

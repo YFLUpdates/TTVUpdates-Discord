@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
-import {Dice, Buy, Slots, Zglos, Points} from "./command/index.js";
+import {Dice, Buy, Slots, Zglos, Points, Roulette} from "./command/index.js";
 
 dotenv.config();
 
@@ -96,6 +96,23 @@ client.on("messageCreate", async (msg) => {
 
       break;
     }
+    case 'ruletka':
+    case 'roulette': {
+      if (cooldown > Date.now() - 2000) {
+        break;
+      }
+      cooldown = Date.now();
+
+      const command = await Roulette(msg, argumentClean, args);
+
+      if(command === null){
+        break;
+      }
+
+      msg.channel.send(command);
+
+      break;
+    }
     case 'zglos': {
 
       const command = await Zglos(msg, args);
@@ -134,7 +151,7 @@ client.on("messageCreate", async (msg) => {
       const embed = new EmbedBuilder()
       .setTitle("Pomoc")
       .setColor(8086271)
-      .setDescription("***»*** ``!dice {kwota/info} - Rzuć kośćmi o punkty.``\n***»*** ``!slots {kwota/info}``\n***»*** ``!buy {hazardzista} - Kup specjalne role.``\n***»*** ``!punkty {puste/nick ttv} - Sprawdz punkty.``")
+      .setDescription("***»*** ``!dice {kwota/info} - Rzuć kośćmi o punkty.``\n***»*** ``!slots {kwota/info}``\n***»*** ``!ruletka {kolor/info} {kwota} - Postaw na kolor i zobacz czy wygrasz``\n***»*** ``!buy {hazardzista} - Kup specjalne role.``\n***»*** ``!punkty {puste/nick ttv} - Sprawdz punkty.``")
       .setTimestamp();
 
       
