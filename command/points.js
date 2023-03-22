@@ -21,13 +21,20 @@ async function getTop() {
     });
 }
 
-export default async function points(channel, discordID, argument, args) {
+export default async function commandPoints(channelId, channel, discordID, argument, args) {
+  const gambleChannel = "1083102450472468480";
+
+  if (channelId !== gambleChannel) {
+    return null;
+  }
 
   if (argument === "ranking") {
     const topka = await getTop();
 
     return `Najwięcej punktów mają: ${topka} - https://yfl.es/streamer/${channel}`;
-  } else if (argument === "send") {
+  }
+  
+  if (argument === "send") {
     if (!args[1] || args[1] == " "){
        return `<@${discordID}>, zapomniałeś/aś podać osobe `; 
     }
@@ -58,7 +65,9 @@ export default async function points(channel, discordID, argument, args) {
       return `<@${discordID}>, ${receiver} jeszcze nie został/a zarejestrowany/a, nie jesteś w stanie wysłać mu/jej punktów`;
 
     return `<@${discordID}>, wysłałeś/aś ${betPoints} punktów do ${receiver}`;
-  } else if (argument && argument.length > 3) {
+  }
+  
+  if (argument && argument.length > 3) {
     const points = await getPoints(argument, "adrian1g__", true);
 
     if(points === null || points.points === null){
@@ -66,7 +75,8 @@ export default async function points(channel, discordID, argument, args) {
     }
 
     return `${argument}, ma ${points.points} punktów`;
-  } else {
+  }
+
     const points = await getPoints(discordID, "adrian1g__");
 
     if(points === null || points.points === null){
@@ -74,5 +84,4 @@ export default async function points(channel, discordID, argument, args) {
     }
 
     return `<@${discordID}>, masz ${points.points} punktów`;
-  }
 }
