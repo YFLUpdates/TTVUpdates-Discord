@@ -62,12 +62,12 @@ export default async function commandDice(msg, argumentClean){
       }
   
       if (multiplyAmount === 66) {
-        return `<@${discordID}> szatańska wygrana ${winAmount} ${okurwa} ${fire} x66 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `;
+        return `<@${discordID}> szatańska wygrana ${new Intl.NumberFormat('pl-PL').format(winAmount)} ${okurwa} ${fire} x66 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `;
       }
   
       if (multiplyAmount === 33) {
-        return `<@${discordID}> szczęśliwa trójka ${winAmount} ${jasperAktywacja} 🍀 🍀 x33 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `;
+        return `<@${discordID}> szczęśliwa trójka ${new Intl.NumberFormat('pl-PL').format(winAmount)} ${jasperAktywacja} 🍀 🍀 x33 - 🎲${dice1} 🎲${dice2} 🎲${dice3} `;
       }
   
-      return `<@${discordID}> wygrałeś/aś ${winAmount} punktów ${okurwa} - 🎲${dice1} 🎲${dice2} 🎲${dice3}`;
+      return `<@${discordID}> wygrałeś/aś ${new Intl.NumberFormat('pl-PL').format(winAmount)} punktów ${okurwa} - 🎲${dice1} 🎲${dice2} 🎲${dice3}`;
 }

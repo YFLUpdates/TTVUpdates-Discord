@@ -69,7 +69,7 @@ client.on("messageCreate", async (msg) => {
       }
       cooldown = Date.now();
 
-      const command = await Points(msg.channelId, "adrian1g__", msg.author.id, argumentClean, args);
+      const command = await Points(msg, argumentClean, args);
 
       if(command === null){
         break;
