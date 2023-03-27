@@ -9,15 +9,15 @@ export default async function commandZglos(msg, args){
 
     const senderID = msg.author.id;
 
-    if (!args[0] || Number(args[0]) <= 0 || isNaN(args[0])) {
+    if (!args[0] || isNaN(args[0])) {
       return {type: "text", data: `<@${senderID}>, zapomniałeś/aś o kordach X `};
     }
 
-    if (!args[1] || Number(args[1]) <= 0 || isNaN(args[1])) {
+    if (!args[1] || isNaN(args[1])) {
       return {type: "text", data: `<@${senderID}>, zapomniałeś/aś o kordach Y `};
     }
 
-    if (!args[2] || Number(args[2]) <= 0 || isNaN(args[2])) {
+    if (!args[2] || isNaN(args[2])) {
       return {type: "text", data: `<@${senderID}>, zapomniałeś/aś o kordach Z `};
     }
 
