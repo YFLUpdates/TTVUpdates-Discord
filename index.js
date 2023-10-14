@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
-import {Dice, Buy, Slots, Zglos, Points, Roulette} from "./command/index.js";
+import { Dice, Buy, Slots, Zglos, Points, Roulette, Case } from "./command/index.js";
 
 dotenv.config();
 
@@ -35,7 +35,7 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", async (msg) => {
-  if(!msg.content.startsWith('!')) return;
+  if (!msg.content.startsWith('!')) return;
 
   const args = msg.content.slice(1).split(" ");
   const command = args.shift().toLowerCase();
@@ -54,7 +54,7 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Dice(msg, argumentClean);
 
-      if(command === null){
+      if (command === null) {
         break;
       }
 
@@ -71,7 +71,7 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Points(msg, argumentClean, args);
 
-      if(command === null){
+      if (command === null) {
         break;
       }
       msg.channel.send(command);
@@ -88,7 +88,7 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Slots(msg, argumentClean);
 
-      if(command === null){
+      if (command === null) {
         break;
       }
 
@@ -105,7 +105,26 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Roulette(msg, argumentClean, args);
 
-      if(command === null){
+      if (command === null) {
+        break;
+      }
+
+      msg.channel.send(command);
+
+      break;
+    }
+    case 'skrzynki':
+    case 'case':
+    case 'skrzynia': {
+
+      if (cooldown > Date.now() - 2000) {
+        break;
+      }
+      cooldown = Date.now();
+
+      const command = await Case(msg, argumentClean, args);
+
+      if (command === null) {
         break;
       }
 
@@ -117,20 +136,20 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Zglos(msg, args);
 
-      if(command === null){
+      if (command === null) {
         break;
       }
 
-      if(command.type === "text"){
+      if (command.type === "text") {
         msg.channel.send(command.data);
 
         break;
       }
 
       client.channels.cache
-      .get("1083775118209187910")
-      .send({ embeds: [command.data] })
-      .catch(console.error);
+        .get("1083775118209187910")
+        .send({ embeds: [command.data] })
+        .catch(console.error);
 
       break;
     }
@@ -138,7 +157,7 @@ client.on("messageCreate", async (msg) => {
     case 'buy': {
       const command = await Buy(msg, argumentClean);
 
-      if(command === null){
+      if (command === null) {
         break;
       }
 
@@ -149,14 +168,14 @@ client.on("messageCreate", async (msg) => {
     case 'pomoc':
     case 'help': {
       const embed = new EmbedBuilder()
-      .setTitle("Pomoc")
-      .setColor(8086271)
-      .setDescription("***»*** ``!dice {kwota/info} - Rzuć kośćmi o punkty.``\n***»*** ``!slots {kwota/info}``\n***»*** ``!ruletka {kolor/info} {kwota} - Postaw na kolor i zobacz czy wygrasz``\n***»*** ``!buy {hazardzista} - Kup specjalne role.``\n***»*** ``!punkty {puste/nick ttv} - Sprawdz punkty.``")
-      .setTimestamp();
+        .setTitle("Pomoc")
+        .setColor(8086271)
+        .setDescription("***»*** ``!dice {kwota/info} - Rzuć kośćmi o punkty.``\n***»*** ``!slots {kwota/info}``\n***»*** ``!ruletka {kolor/info} {kwota} - Postaw na kolor i zobacz czy wygrasz``\n***»*** ``!buy {hazardzista} - Kup specjalne role.``\n***»*** ``!punkty {puste/nick ttv} - Sprawdz punkty.``")
+        .setTimestamp();
 
-      
+
       msg.channel.send({ embeds: [embed] });
-      
+
       break;
     }
     default:

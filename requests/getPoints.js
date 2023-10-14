@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default async function getPoints(user, channelName, ttv) {
-    let url = `https://api.yfl.es/v1/user/dc/find/${user}?channel=${channelName}`;
+    let url = `https://api.ttvu.link/v1/user/discord/${user}?channel=${channelName}`;
     
     if(ttv){
-        url = `https://api.yfl.es/v1/user/find/${user}?channel=${channelName}`;
+        url = `https://api.ttvu.link/v1/user/discord/${user}?channel=${channelName}`;
     }
 
     return await axios.get(url, {headers: {'Content-type': 'application/json'}})
