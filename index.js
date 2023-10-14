@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
-import { Dice, Buy, Slots, Zglos, Points, Roulette, Case } from "./command/index.js";
+import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory } from "./command/index.js";
 
 dotenv.config();
 
@@ -70,6 +70,23 @@ client.on("messageCreate", async (msg) => {
       cooldown = Date.now();
 
       const command = await Points(msg, argumentClean, args);
+
+      if (command === null) {
+        break;
+      }
+      msg.channel.send(command);
+
+      break;
+    }
+    case 'ekwipunek':
+    case 'eq':
+    case 'inventory': {
+      if (cooldown > Date.now() - 2000) {
+        break;
+      }
+      cooldown = Date.now();
+
+      const command = await Inventory(msg, argumentClean, args);
 
       if (command === null) {
         break;

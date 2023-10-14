@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js";
 
 export default async function commandZglos(msg, args){
-    const gambleChannel = "1081747003253461022";
+    const gambleChannel = process.env.GAMBLE_CHANNEL;
 
     if (msg.channelId !== gambleChannel) {
       return null;

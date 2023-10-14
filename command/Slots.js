@@ -5,7 +5,7 @@ import gambleUpdate from "../requests/gambleUpdate.js";
 import getPoints from "../requests/getPoints.js";
 
 export default async function commandSlots(msg, argumentClean){
-    const gambleChannel = "1083102450472468480";
+    const gambleChannel = process.env.GAMBLE_CHANNEL;
 
     if (msg.channelId !== gambleChannel) {
       return null;

@@ -5,5 +5,6 @@ import Zglos from "./Zglos.js";
 import Points from "./Points.js";
 import Roulette from "./Roulette.js";
 import Case from "./Case.js";
+import Inventory from "./Inventory.js";
 
-export { Dice, Buy, Slots, Zglos, Points, Roulette, Case};
+export { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory};
