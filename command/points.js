@@ -5,7 +5,7 @@ import { aha, aok, hm, jasperTragedia } from "../functions/slots/data/discordEmo
 import { EmbedBuilder } from "discord.js";
 
 export default async function commandPoints(msg, argumentClean, args) {
-  const gambleChannel = "1083102450472468480";
+  const gambleChannel = process.env.GAMBLE_CHANNEL;
 
   if (msg.channelId !== gambleChannel) {
     return null;

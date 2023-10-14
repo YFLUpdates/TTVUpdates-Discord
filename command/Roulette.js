@@ -4,7 +4,7 @@ import gambleUpdate from "../requests/gambleUpdate.js";
 import { beka, fire, jasperBoobsy, okurwa, aha } from "../functions/slots/data/discordEmotes.js";
 
 export default async function commandRoulette(msg, argumentClean, args){
-    const gambleChannel = "1083102450472468480";
+    const gambleChannel = process.env.GAMBLE_CHANNEL;
 
     if (msg.channelId !== gambleChannel) {
       return null;

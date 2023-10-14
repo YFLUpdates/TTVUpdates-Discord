@@ -6,7 +6,7 @@ import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
 export default async function commandCase(msg, argumentClean, args) {
-  const gambleChannel = "1083102450472468480";
+  const gambleChannel = process.env.GAMBLE_CHANNEL;
 
   if (msg.channelId !== gambleChannel) {
     return null;
