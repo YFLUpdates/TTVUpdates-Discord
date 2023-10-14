@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function CreateItem(user, item, price, img, channel) {
   return await axios({
-    url: `https://api.ttvu.link/v1/inventory/admin/item/create`,
+    url: `${process.env.APP_SERVER_URL}/v1/inventory/admin/item/create`,
     method: "post",
     data: {
       user_login: user,

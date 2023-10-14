@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export default async function gambleUpdate(channel, points, who){
+export default async function gambleUpdate(channel, points, who) {
     return await axios({
-        url: `https://api.yfl.es/v1/user/gamble/${channel}`,
+        url: `${process.env.APP_SERVER_URL}/v1/user/channels/gamble/${channel}`,
         method: "put",
         data: {
             points: points,
@@ -10,17 +10,17 @@ export default async function gambleUpdate(channel, points, who){
         },
         headers: {
             'Content-type': 'application/json',
-            'clientID': process.env.YFL_CLIENT_ID,
-            'token': process.env.YFL_TOKEN
+            "client-id": process.env.DEV_TOKEN_CLIENTID || process.env.TOKEN_CLIENTID,
+            authorization: process.env.DEV_TOKEN_AUTHORIZATION || process.env.TOKEN_AUTHORIZATION,
         }
     })
-    .then(async (res) => {
-        //console.log(data)
-        return res.data;
-    })
-    .catch(err => {
-        //console.log(err)
+        .then(async (res) => {
+            //console.log(data)
+            return res.data;
+        })
+        .catch(err => {
+            //console.log(err)
 
-        return null;
-    })
+            return null;
+        })
 }

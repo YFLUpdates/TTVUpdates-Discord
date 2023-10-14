@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function getRanking() {
     return await axios.get(
-        `https://api.yfl.es/v1/rankings/channel/ranking/points/adrian1g__`,
+        `${process.env.APP_SERVER_URL}/v1/user/channel/ranking/points/adrian1g__`,
         { headers: { "Content-type": "application/json" } }
       )
       .then(async (res) => {
