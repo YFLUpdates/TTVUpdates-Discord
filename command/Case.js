@@ -15,17 +15,17 @@ export default async function commandCase(msg, argumentClean, args) {
   const discordID = msg.author.id;
 
   if (!argumentClean) {
-    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble. Drop pod: szansa (np. !case chance snake).`;
+    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Drop pod: szansa (np. !case chance snake).`;
   }
 
   if (["szansa", "chance"].includes(argumentClean)) {
     if (args.length < 2 || !args[1]) {
-      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble.`;
+      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
     }
 
     const nameCase = args[1];
 
-    if (["nightmare", "riptide", "snake", "cobble"].includes(nameCase)) {
+    if (["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(nameCase)) {
       return `<@${discordID}>, Szansa na drop: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
     }
     // else if ("cobble".includes(nameCase)) {
@@ -33,7 +33,7 @@ export default async function commandCase(msg, argumentClean, args) {
     // }
   }
 
-  if (!["nightmare", "riptide", "snake", "cobble"].includes(argumentClean)) {
+  if (!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)) {
     return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
 

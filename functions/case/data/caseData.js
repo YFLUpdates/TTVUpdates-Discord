@@ -240,6 +240,74 @@ export const cases = {
         },
         "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/weapon_cases/crate_community_30.c471a3f74a254c80754f7deec19adaf0df266e23.png"
     },
+    "huntsman": {
+        "name": "Skrzynia Łowcy",
+        "cost": 8500,
+        "white": {
+            "from": 0,
+            "to": 53,
+            "skins": [
+                {"name": "Tec-9 | Izaak", "price": 913, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_tec9_cu_tec9_asiimov_light.png"},
+                {"name": "SSG 08 | Pazury", "price": 246, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_ssg08_cu_ssg08_immortal_light.png"},
+                {"name": "Galil AR | Kami", "price": 274, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_galilar_hy_galil_kami_light.png"},
+                {"name": "CZ75-Auto | Skrętka", "price": 284, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_cz75a_am_gyrate_light.png"},
+                {"name": "P90 | Moduł", "price": 242, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_p90_an_royalbleed_light.png"},
+                {"name": "P2000 | Puls", "price": 260, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_hkp2000_cu_p2000_pulse_light.png"},
+                {"name": "CZ75-Auto | Zatruta strzałka", "price": 402, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_cz75a_am_nitrogen_light.png"},
+                {"name": "Dwie beretty | Zemsta", "price": 302, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_elite_cu_retribution_light.png"},
+                {"name": "P90 | Pustynna walka", "price": 263, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_p90_cu_p90_scorpius_light.png"}
+            ]
+        },
+        "blue": {
+            "from": 54,
+            "to": 77,
+            "skins": [
+                {"name": "AUG | Moment siły", "price": 895, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_aug_cu_aug_progressiv_light.png"},
+                {"name": "PP-Bizon | Antyk", "price": 891, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_bizon_cu_bizon_antique_light.png"},
+                {"name": "XM1014 | Strażnik niebios", "price": 1028, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_xm1014_cu_xm1014_heaven_guard_light.png"},
+                {"name": "MAC-10 | Łachman", "price": 950, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_mac10_cu_korupt_light.png"},
+                {"name": "MAC-10 | Klątwa", "price": 958, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_mac10_cu_mac10_decay_light.png"}
+            ]
+        },
+        "purple": {
+            "from": 78,
+            "to": 89,
+            "skins": [
+                {"name": "M4A1-S | Stop atomowy", "price": 8725, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_silencer_am_m4a1-s_alloy_orange_light.png"},
+                {"name": "SCAR-20 | Cyrex", "price": 5311, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_scar20_cu_scar_cyrex_light.png"},
+                {"name": "USP-S | Kajman", "price": 5426, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_usp_silencer_cu_kaiman_light.png"},
+                {"name": "USP-S | Orion", "price": 5275, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_usp_silencer_cu_usp_spitfire_light.png"}
+            ]
+        },
+        "red": {
+            "from": 90,
+            "to": 97,
+            "skins": [
+                {"name": "AK-47 | Wulkan", "price": 79059, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_ak47_cu_ak47_rubber_light.png"},
+                {"name": "M4A4 | Pustynny szturm", "price": 911, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_cu_titanstorm_light.png"}
+            ]
+        },
+        "gold": {
+            "from": 98,
+            "to": 100,
+            "skins": [
+                {"name": "Nóż myśliwski (★) | Gradient", "price": 56275, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_aa_fade_light.png"},
+                {"name": "Nóż myśliwski (★) | Szkarłatna sieć", "price": 131900, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_hy_webs_light.png"},
+                {"name": "Nóż myśliwski (★) | Rzeź", "price": 39961, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_am_zebra_light.png"},
+                {"name": "Nóż myśliwski (★) | Stal nawęglana", "price": 45998, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_aq_oiled_light.png"},
+                {"name": "Nóż myśliwski (★) | Miejski zamaskowany", "price": 38617, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_sp_tape_urban_light.png"},
+                {"name": "Nóż myśliwski (★) | Niebieska stal", "price": 35936, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_aq_blued_light.png"},
+                {"name": "Nóż myśliwski (★) | Noc", "price": 54243, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_so_night_light.png"},
+                {"name": "Nóż myśliwski (★) | Śniedź", "price": 22711, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_aq_forced_light.png"},
+                {"name": "Nóż myśliwski (★) | Leśny DDPAT", "price": 38610, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_hy_ddpat_light.png"},
+                {"name": "Nóż myśliwski (★) | Tajga", "price": 30664, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_hy_forest_boreal_light.png"},
+                {"name": "Nóż myśliwski (★) | Popiół", "price": 13491, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_sp_dapple_light.png"},
+                {"name": "Nóż myśliwski (★) | Siatka safari", "price": 24195, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_sp_mesh_tan_light.png"},
+                {"name": "M4A4 | Ryk", "price": 625200, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_cu_m4a1_howling_light.png"}
+            ]
+        },
+        "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/weapon_cases/crate_community_3.ce832a92f9fc329dc87d7a802374b918b07cdb84.png"
+    },
     "cobble": {
         "name": "Kolekcja Cobblestone",
         "cost": 45000,
