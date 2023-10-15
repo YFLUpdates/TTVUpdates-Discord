@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, GatewayIntentBits } from "discord.js";
+import { Client, EmbedBuilder, GatewayIntentBits, ActivityType } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
 import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory } from "./command/index.js";
@@ -32,6 +32,16 @@ app.listen(PORT, () => console.log(`API Server listening on port ${PORT}`));
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
+
+	client.user.setPresence({
+		activities: [
+			{
+				name: 'STRONA: ttvu.link',
+				type: ActivityType.Custom
+			},
+		],
+		status: 'dnd',
+	})
 });
 
 client.on("messageCreate", async (msg) => {
