@@ -27,16 +27,15 @@ export default async function commandInventory(msg, argumentClean, args) {
 			return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 		}
 
-		if (viewer.length >= 5) {
+		if(viewer.length > 5) {
 			return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
 				.slice(0, 5)
 				.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-				.join(', ')}, +${viewer.length - 5} ( Zaloguj się na https://ttvu.link/inventory )`
+				.join(', ')}, +${viewer.length - 5} ( Pełna rozpiska na https://ttvu.link/inventory po zalogowaniu )`
 		}
-
 		return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
 			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-			.join(', ')} ( Zaloguj się na https://ttvu.link/inventory )`
+			.join(', ')} ( Pełna rozpiska na https://ttvu.link/inventory po zalogowaniu )`
 	}
 
 	// //Sell Items
@@ -77,14 +76,8 @@ export default async function commandInventory(msg, argumentClean, args) {
 		return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 	}
 
-	if (viewer.length >= 5) {
-		return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
-			.slice(0, 5)
-			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-			.join(', ')}, +${viewer.length - 5} ( Zaloguj się na https://ttvu.link/${argumentClean} )`
-	}
-
-	return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
-		.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-		.join(', ')} ( Zaloguj się na https://ttvu.link/${argumentClean} )`
+	return `@${userName}, posiada w swoim ekwipunku: ${viewer
+		.slice(0, 1)
+		.map(e => `${e.item} (${Intl.NumberFormat('en', { notation: 'compact' }).format(e.price)} pkt) [id: ${e.id}]`)
+		.join()} - pełna rozpiska na https://ttvu.link/${argumentClean}`
 }
