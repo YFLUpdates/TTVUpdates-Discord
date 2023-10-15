@@ -11,7 +11,6 @@ export default async function commandRoulette(msg, argumentClean, args){
     }
 
     const discordID = msg.author.id;
-    const points = await getPoints(discordID, "adrian1g__");
 
     if (argumentClean === "info") {
         return `<@${discordID}>, prosta ruletka z pięcioma kolorami **->**\nJeśli postawisz na czarny lub czerwony - Wygrywasz **x2**\nJeśli postawisz na niebieski - Wygrywasz **x3**\nJeśli postawisz na pomarańczowy - Wygrywasz **x5**\nJeśli postawisz na zielony - Wygrywasz **x14**\nAutor ten pierwszy i najlepszy programista - xan ${jasperBoobsy}`;
@@ -33,6 +32,8 @@ export default async function commandRoulette(msg, argumentClean, args){
         return `<@${discordID}>, maksymalnie można obstawić 5000 punktów `; 
     }
 
+    const points = await getPoints(discordID, "adrian1g__");
+    
     if (points === null || points.points === null) {
         return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc "+discordID+"`"} na kanale adrian1g__`;
     }
