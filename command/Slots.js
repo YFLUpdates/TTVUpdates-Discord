@@ -20,8 +20,6 @@ export default async function commandSlots(msg, argumentClean){
       return `<@${discordID}>, ${slotsPercentage}`;
     }
 
-    const points = await getPoints(discordID, "adrian1g__");
-
     if (!argumentClean) {
       return `<@${discordID}>, zapomniałeś/aś o kwocie `;
     }
@@ -30,6 +28,8 @@ export default async function commandSlots(msg, argumentClean){
     if (betPoints > 20000 || betPoints <= 0 || !betPoints) {
       return `<@${discordID}>, maksymalnie można obstawić 20000 punktów `;
     }
+
+    const points = await getPoints(discordID, "adrian1g__");
 
     if (points === null || points.points === null) {
       return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc "+discordID+"`"} na kanale adrian1g__`;
