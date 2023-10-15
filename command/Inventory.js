@@ -76,7 +76,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 		return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 	}
 
-	return `@${userName}, posiada w swoim ekwipunku: ${viewer
+	return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
 		.slice(0, 1)
 		.map(e => `${e.item} (${Intl.NumberFormat('en', { notation: 'compact' }).format(e.price)} pkt) [id: ${e.id}]`)
 		.join()} - pełna rozpiska na https://ttvu.link/${argumentClean}`
