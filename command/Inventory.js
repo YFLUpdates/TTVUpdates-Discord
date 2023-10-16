@@ -26,16 +26,11 @@ export default async function commandInventory(msg, argumentClean, args) {
 		if (viewer === null) {
 			return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 		}
-
-		if(viewer.length > 5) {
-			return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
-				.slice(0, 5)
-				.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-				.join(', ')}, +${viewer.length - 5} ( Pełna rozpiska na https://ttvu.link/inventory po zalogowaniu )`
-		}
+		
 		return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
+			.slice(0, 1)
 			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-			.join(', ')} ( Pełna rozpiska na https://ttvu.link/inventory po zalogowaniu )`
+			.join()} - pełna rozpiska na https://ttvu.link/${points.user_login}`
 	}
 
 	// //Sell Items
