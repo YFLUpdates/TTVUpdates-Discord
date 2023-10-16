@@ -30,19 +30,41 @@ app.use((req, res, next) => {
 
 app.listen(PORT, () => console.log(`API Server listening on port ${PORT}`));
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`)
 
-	client.user.setPresence({
-		activities: [
-			{
-				name: 'STRONA: ttvu.link',
-				type: ActivityType.Custom
-			},
-		],
-		status: 'dnd',
-	})
-});
+  const statusArray = [
+    {
+      content: 'https://ttvu.link',
+      type: ActivityType.Playing,
+      url: 'https://ttvu.link'
+    },
+    {
+      content: 'https://buycoffee.to/docchi',
+      type: ActivityType.Competing,
+      url: 'https://buycoffee.to/docchi'
+    },
+    {
+      content: 'https://docchi.pl',
+      type: ActivityType.Watching,
+      url: 'https://docchi.pl'
+    }
+  ]
+
+  setInterval(() => {
+    let random = Math.floor(Math.random() * statusArray.length)
+    client.user.setPresence({
+      activities: [
+        {
+          name: statusArray[random].content,
+          type: statusArray[random].type,
+          url: statusArray[random].url
+        }
+      ],
+      status: 'idle'
+    })
+  }, 1000 * 60);
+})
 
 client.on("messageCreate", async (msg) => {
   if (!msg.content.startsWith('!')) return;
