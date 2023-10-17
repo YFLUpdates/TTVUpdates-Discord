@@ -26,24 +26,36 @@ export default async function commandCase(msg, argumentClean, args) {
     const nameCase = args[1];
 
     if (["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
     }
     // else if ("cobble".includes(nameCase)) {
     //   return `<@${discordID}>, Szansa na drop: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
     // }
   }
 
-  if (!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)) {
-    return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
-  }
+  if(["lista", "list"].includes(argumentClean)) {
+    if(args.length < 2 || !args[1]) {
+      return `@${user}, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
+    }
 
+    const nameCase = args[1]
+
+    if(["nightmare", "riptide", "snake", "huntsman", "cobble"].includes(nameCase)) {
+      return `@${user}, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
+    }
+  }
+  
   const data = cases[argumentClean];
   const points = await getPoints(discordID, "adrian1g__");
 
+  if (!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)) {
+    return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
+  }
+  
   if (points === null || points.points === null) {
     return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
-
+  
   if (data.cost > points.points) {
     return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha (masz ${points.points} pkt)`;
   }
