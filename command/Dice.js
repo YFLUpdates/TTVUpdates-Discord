@@ -31,11 +31,11 @@ export default async function commandDice(msg, argumentClean){
       }
   
       if (points === null || points.points === null) {
-        return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc "+discordID+"`"} na kanale adrian1g__`;
+        return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc "+discordID+"`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
       }
   
       if (Number(argumentClean) > points.points) {
-        return `<@${discordID}> nie masz tylu punktów ${aha} `
+        return `<@${discordID}> nie masz tylu punktów ${aha} (masz ${points.points} pkt)`
       }
   
       const dice1 = await rollDice();

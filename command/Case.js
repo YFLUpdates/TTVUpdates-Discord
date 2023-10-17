@@ -41,11 +41,11 @@ export default async function commandCase(msg, argumentClean, args) {
   const points = await getPoints(discordID, "adrian1g__");
 
   if (points === null || points.points === null) {
-    return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale adrian1g__`;
+    return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
 
   if (data.cost > points.points) {
-    return `<@${discordID}>,  nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha `;
+    return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha (masz ${points.points} pkt)`;
   }
 
   const rolledNumber = await rollColor();

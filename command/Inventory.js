@@ -43,7 +43,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 		const points = await getPoints(discordID, "adrian1g__");
 
 		if (points === null || points.points === null) {
-			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale adrian1g__`;
+			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
 		}
 
 		const itemInfo = await getItem(points.user_login, itemID);
