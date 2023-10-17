@@ -15,7 +15,7 @@ export default async function commandCase(msg, argumentClean, args) {
   const discordID = msg.author.id;
 
   if (!argumentClean) {
-    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Drop pod: szansa (np. !case chance snake).`;
+    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Inne argumenty: szansa, lista (np. !case chance snake).`;
   }
 
   if (["szansa", "chance"].includes(argumentClean)) {
