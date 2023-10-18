@@ -35,13 +35,13 @@ export default async function commandCase(msg, argumentClean, args) {
 
   if(["lista", "list"].includes(argumentClean)) {
     if(args.length < 2 || !args[1]) {
-      return `@${user}, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
+      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
     }
 
     const nameCase = args[1]
 
     if(["nightmare", "riptide", "snake", "huntsman", "cobble"].includes(nameCase)) {
-      return `@${user}, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
+      return `<@${discordID}>, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
     }
   }
   
@@ -54,10 +54,10 @@ export default async function commandCase(msg, argumentClean, args) {
   const data = listOfCases[checkClean() || args[1]];
 
   if(!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)){
-    return `@${user}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
+    return `<@${discordID}>}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
   
-  const userInfo = await userData(user, channelClean);
+  const userInfo = await userData(discordID, channelClean);
   
   if (points === null || points.points === null) {
     return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
