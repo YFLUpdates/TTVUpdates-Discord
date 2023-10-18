@@ -45,12 +45,19 @@ export default async function commandCase(msg, argumentClean, args) {
     }
   }
   
-  const data = cases[argumentClean];
-  const points = await getPoints(discordID, "adrian1g__");
-
-  if (!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)) {
-    return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
+  const checkClean = () => {
+    if(['lista', 'list', 'szansa', 'chance'].includes(argumentClean)) {
+      return null
+    }
   }
+  
+  const data = listOfCases[checkClean() || args[1]];
+
+  if(!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)){
+    return `@${user}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
+  }
+  
+  const userInfo = await userData(user, channelClean);
   
   if (points === null || points.points === null) {
     return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
