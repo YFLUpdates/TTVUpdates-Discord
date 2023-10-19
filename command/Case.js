@@ -5,6 +5,14 @@ import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
+const checkClean = (arg) => {
+  if (['lista', 'list', 'szansa', 'chance'].includes(arg)) {
+    return null
+  }
+
+  return arg;
+}
+
 export default async function commandCase(msg, argumentClean, args) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
 
@@ -38,33 +46,27 @@ export default async function commandCase(msg, argumentClean, args) {
       return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
     }
 
-    const nameCase = args[1]
+    const nameCase = args[1];
 
     if(["nightmare", "riptide", "snake", "huntsman", "cobble"].includes(nameCase)) {
       return `<@${discordID}>, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
     }
   }
   
-  const checkClean = () => {
-    if(['lista', 'list', 'szansa', 'chance'].includes(argumentClean)) {
-      return null
-    }
-  }
-  
-  const data = listOfCases[checkClean() || args[1]];
+  const data = cases[checkClean(argumentClean) || args[1]];
 
   if(!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)){
     return `<@${discordID}>}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
   
-  const userInfo = await userData(discordID, channelClean);
+  const userInfo = await getPoints(discordID, channelClean);
   
-  if (points === null || points.points === null) {
+  if (points === null || userInfo.points === null) {
     return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
   
-  if (data.cost > points.points) {
-    return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha (masz ${points.points} pkt)`;
+  if (data.cost > userInfo.points) {
+    return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha (masz ${userInfo.points} pkt)`;
   }
 
   const rolledNumber = await rollColor();
@@ -77,7 +79,7 @@ export default async function commandCase(msg, argumentClean, args) {
   const updatePoints = await gambleUpdate(
     "adrian1g__",
     `-${data.cost}`,
-    points.user_login
+    userInfo.user_login
   );
 
   if (updatePoints === null) {
@@ -85,7 +87,7 @@ export default async function commandCase(msg, argumentClean, args) {
   }
 
   const addItem = await CreateItem(
-    points.user_login,
+    userInfo.user_login,
     `[${skin.rarity}] ${skin.name}`,
     skin.price,
     skin.image,

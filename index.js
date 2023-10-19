@@ -35,17 +35,17 @@ client.on('ready', () => {
 
   const statusArray = [
     {
-      content: 'https://ttvu.link',
+      content: 'ttvu.link',
       type: ActivityType.Playing,
       url: 'https://ttvu.link'
     },
     {
-      content: 'https://buycoffee.to/docchi',
+      content: 'buycoffee.to/docchi',
       type: ActivityType.Competing,
       url: 'https://buycoffee.to/docchi'
     },
     {
-      content: 'https://docchi.pl',
+      content: 'docchi.pl',
       type: ActivityType.Watching,
       url: 'https://docchi.pl'
     }

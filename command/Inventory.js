@@ -72,7 +72,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 	}
 
 	return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
-		.slice(0, 1)
+		.slice(0, 0)
 		.map(e => `${e.item} (${Intl.NumberFormat('en', { notation: 'compact' }).format(e.price)} pkt) [id: ${e.id}]`)
 		.join()} - pełna rozpiska na https://ttvu.link/${argumentClean}`
 }
