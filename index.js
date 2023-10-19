@@ -129,7 +129,7 @@ client.on("messageCreate", async (msg) => {
           .setThumbnail(`https://ttvu.link/logo512.png`)
           .addFields(
             { name: `❯ Użycie komendy:`, value: `!points\n!points 3xanax\n!points ranking\n!points send 3xanax 100` },
-            { name: `❯ rgumenty:`, value: `user, ranking, send, kwota` },
+            { name: `❯ Argumenty:`, value: `user, ranking, send, kwota` },
             { name: `❯ Aliasy:`, value: `!punkty` },
           )
           .setImage(`https://ttvu.link/og-default.png`)
