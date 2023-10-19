@@ -59,9 +59,9 @@ export default async function commandCase(msg, argumentClean, args) {
     return `<@${discordID}>}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
   
-  const userInfo = await getPoints(discordID, channelClean);
+  const userInfo = await getPoints(discordID, "adrian1g__");
   
-  if (points === null || userInfo.points === null) {
+  if (userInfo === null || userInfo.points === null) {
     return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
   
