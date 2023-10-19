@@ -161,7 +161,7 @@ client.on("messageCreate", async (msg) => {
         const embed = new EmbedBuilder()
           .setColor(8086271)
           .setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
-          .setDescription('**Opis:** Pokazuje co udało Ci się zdobyć')
+          .setDescription('**Opis:** Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.')
           .setThumbnail(`https://ttvu.link/logo512.png`)
           .addFields(
             { name: `❯ Użycie komendy:`, value: `!eq\n!eq sell 34` },
@@ -334,7 +334,7 @@ client.on("messageCreate", async (msg) => {
         .addFields(
           { name: `❯ !case [chance/lista]`, value: `Otwieranie skrzynek` },
           { name: `❯ !dice {kwota}`, value: `Rzuć kostkami o punkty` },
-          { name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć` },
+          { name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.` },
           { name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci` },
           { name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki` },
           { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz możesz robić transfer punktów` },
