@@ -86,6 +86,24 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Dice(msg, argumentClean);
 
+      if (["info"].includes(argumentClean)) {
+        const embed = new EmbedBuilder()
+          .setColor(8086271)
+          .setAuthor({ name: `Komenda - Dice`, iconURL: `https://ttvu.link/logo512.png` })
+          .setDescription('**Opis:** Rzuć kostkami o punkty')
+          .setThumbnail(`https://ttvu.link/logo512.png`)
+          .addFields(
+            { name: `❯ Użycie komendy:`, value: `!dice 100` },
+            { name: `❯ Argumenty:`, value: `kwota` },
+            { name: `❯ Aliasy:`, value: `!kosci` },
+          )
+          .setImage(`https://ttvu.link/og-default.png`)
+          .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+          .setTimestamp();
+
+        return msg.channel.send({ embeds: [embed] });
+      }
+
       if (command === null) {
         break;
       }
@@ -103,6 +121,24 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Points(msg, argumentClean, args);
 
+      if (["info"].includes(argumentClean)) {
+        const embed = new EmbedBuilder()
+          .setColor(8086271)
+          .setAuthor({ name: `Komenda - Points`, iconURL: `https://ttvu.link/logo512.png` })
+          .setDescription('**Opis:** Pokazuje liczbe punktów oraz możesz robić transfer punktów')
+          .setThumbnail(`https://ttvu.link/logo512.png`)
+          .addFields(
+            { name: `❯ Użycie komendy:`, value: `!points\n!points 3xanax\n!points ranking\n!points send 3xanax 100` },
+            { name: `❯ rgumenty:`, value: `user, ranking, send, kwota` },
+            { name: `❯ Aliasy:`, value: `!punkty` },
+          )
+          .setImage(`https://ttvu.link/og-default.png`)
+          .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+          .setTimestamp();
+
+        return msg.channel.send({ embeds: [embed] });
+      }
+
       if (command === null) {
         break;
       }
@@ -112,13 +148,32 @@ client.on("messageCreate", async (msg) => {
     }
     case 'ekwipunek':
     case 'eq':
-    case 'inventory': {
+    case 'inventory':
+    case 'inv': {
       if (cooldown > Date.now() - 2000) {
         break;
       }
       cooldown = Date.now();
 
       const command = await Inventory(msg, argumentClean, args);
+
+      if (["info"].includes(argumentClean)) {
+        const embed = new EmbedBuilder()
+          .setColor(8086271)
+          .setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+          .setDescription('**Opis:** Pokazuje co udało Ci się zdobyć')
+          .setThumbnail(`https://ttvu.link/logo512.png`)
+          .addFields(
+            { name: `❯ Użycie komendy:`, value: `!eq\n!eq sell 34` },
+            { name: `❯ Argumenty:`, value: `sell` },
+            { name: `❯ Aliasy:`, value: `!ekwipunek, !inventory, !inv` },
+          )
+          .setImage(`https://ttvu.link/og-default.png`)
+          .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+          .setTimestamp();
+
+        return msg.channel.send({ embeds: [embed] });
+      }
 
       if (command === null) {
         break;
@@ -137,6 +192,24 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Slots(msg, argumentClean);
 
+      if (["info"].includes(argumentClean)) {
+        const embed = new EmbedBuilder()
+          .setColor(8086271)
+          .setAuthor({ name: `Komenda - Slots`, iconURL: `https://ttvu.link/logo512.png` })
+          .setDescription('**Opis:** Proste slotsy na 3 rolki')
+          .setThumbnail(`https://ttvu.link/logo512.png`)
+          .addFields(
+            { name: `❯ Użycie komendy:`, value: `!slots 100` },
+            { name: `❯ Argumenty:`, value: `kwota` },
+            { name: `❯ Aliasy:`, value: `!slot, !sloty` },
+          )
+          .setImage(`https://ttvu.link/og-default.png`)
+          .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+          .setTimestamp();
+
+        return msg.channel.send({ embeds: [embed] });
+      }
+
       if (command === null) {
         break;
       }
@@ -154,6 +227,24 @@ client.on("messageCreate", async (msg) => {
 
       const command = await Roulette(msg, argumentClean, args);
 
+      if (["info"].includes(argumentClean)) {
+        const embed = new EmbedBuilder()
+          .setColor(8086271)
+          .setAuthor({ name: `Komenda - Roulette`, iconURL: `https://ttvu.link/logo512.png` })
+          .setDescription('**Opis:** Postaw na kolor który wyleci')
+          .setThumbnail(`https://ttvu.link/logo512.png`)
+          .addFields(
+            { name: `❯ Użycie komendy:`, value: `!roulette red 100` },
+            { name: `❯ Argumenty:`, value: `Kolory: red [x2], black [x2], blue [x3], orange [x5], green [x14]\nInne: kwota` },
+            { name: `❯ Aliasy:`, value: `!ruletka` },
+          )
+          .setImage(`https://ttvu.link/og-default.png`)
+          .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+          .setTimestamp();
+
+        return msg.channel.send({ embeds: [embed] });
+      }
+
       if (command === null) {
         break;
       }
@@ -162,9 +253,10 @@ client.on("messageCreate", async (msg) => {
 
       break;
     }
-    case 'skrzynki':
+    case 'skrzynka':
     case 'case':
-    case 'skrzynia': {
+    case 'skrzynia':
+    case 'crate': {
 
       if (cooldown > Date.now() - 2000) {
         break;
@@ -172,6 +264,24 @@ client.on("messageCreate", async (msg) => {
       cooldown = Date.now();
 
       const command = await Case(msg, argumentClean, args);
+
+      if (["info"].includes(argumentClean)) {
+        const embed = new EmbedBuilder()
+          .setColor(8086271)
+          .setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+          .setDescription('**Opis:** Otwieranie skrzynek')
+          .setThumbnail(`https://ttvu.link/logo512.png`)
+          .addFields(
+            { name: `❯ Użycie komendy:`, value: `!case snake\n!case chance snake\n!case lista snake` },
+            { name: `❯ Argumenty:`, value: `**Skrzynki:** snake, nightmare, riptide, cobble, huntsman\n**Inne:** chance, szansa, lista, list` },
+            { name: `❯ Aliasy:`, value: `!skrzynka, !skrzynia, !crate` },
+          )
+          .setImage(`https://ttvu.link/og-default.png`)
+          .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+          .setTimestamp();
+
+        return msg.channel.send({ embeds: [embed] });
+      }
 
       if (command === null) {
         break;
@@ -217,9 +327,21 @@ client.on("messageCreate", async (msg) => {
     case 'pomoc':
     case 'help': {
       const embed = new EmbedBuilder()
-        .setTitle("Pomoc")
         .setColor(8086271)
-        .setDescription("***»*** ``!dice {kwota/info} - Rzuć kośćmi o punkty.``\n***»*** ``!slots {kwota/info}``\n***»*** ``!ruletka {kolor/info} {kwota} - Postaw na kolor i zobacz czy wygrasz``\n***»*** ``!buy {hazardzista} - Kup specjalne role.``\n***»*** ``!punkty {puste/nick ttv} - Sprawdz punkty.``")
+        .setAuthor({ name: `POMOC | Lista Komend`, iconURL: `https://ttvu.link/logo512.png` })
+        .setDescription(`[Strona Internetowa](http://ttvu.link)\n[GitHub](https://github.com/YFLUpdates/ttvupdates-discord)`)
+        .setThumbnail(`https://ttvu.link/logo512.png`)
+        .addFields(
+          { name: `❯ !case [chance/lista]`, value: `Otwieranie skrzynek` },
+          { name: `❯ !dice {kwota}`, value: `Rzuć kostkami o punkty` },
+          { name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć` },
+          { name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci` },
+          { name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki` },
+          { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz możesz robić transfer punktów` },
+          { name: `❯ !cmd [info]`, value: `Pokazuje informacje o komendzie` },
+        )
+        .setImage(`https://ttvu.link/og-default.png`)
+        .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
         .setTimestamp();
 
 
