@@ -2,7 +2,7 @@ import Dice from "./Dice.js";
 import Buy from "./Buy.js";
 import Slots from "./Slots.js";
 import Zglos from "./Zglos.js";
-import Points from "./Points.js";
+import Points from "./points.js";
 import Roulette from "./Roulette.js";
 import Case from "./Case.js";
 import Inventory from "./Inventory.js";
