@@ -19,24 +19,18 @@ export default async function commandInventory(msg, argumentClean, args) {
 		const points = await getPoints(discordID, "adrian1g__");
 
 		if (points === null || points.points === null) {
-			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale adrian1g__`;
+			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
 		}
 
 		const viewer = await GetInventory(points.user_login, 'adrian1g__');
 		if (viewer === null) {
 			return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 		}
-
-		if (viewer.length >= 5) {
-			return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
-				.slice(0, 5)
-				.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-				.join(', ')}, +${viewer.length - 5} ( Zaloguj się na https://ttvu.link/inventory )`
-		}
-
+		
 		return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
+			.slice(0, 1)
 			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-			.join(', ')} ( Zaloguj się na https://ttvu.link/inventory )`
+			.join()} - pełna rozpiska na https://ttvu.link/${points.user_login}`
 	}
 
 	// //Sell Items
@@ -49,7 +43,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 		const points = await getPoints(discordID, "adrian1g__");
 
 		if (points === null || points.points === null) {
-			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale adrian1g__`;
+			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
 		}
 
 		const itemInfo = await getItem(points.user_login, itemID);
@@ -77,14 +71,8 @@ export default async function commandInventory(msg, argumentClean, args) {
 		return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 	}
 
-	if (viewer.length >= 5) {
-		return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
-			.slice(0, 5)
-			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-			.join(', ')}, +${viewer.length - 5} ( Zaloguj się na https://ttvu.link/${argumentClean} )`
-	}
-
 	return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
-		.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
-		.join(', ')} ( Zaloguj się na https://ttvu.link/${argumentClean} )`
+		.slice(0, 0)
+		.map(e => `${e.item} (${Intl.NumberFormat('en', { notation: 'compact' }).format(e.price)} pkt) [id: ${e.id}]`)
+		.join()} - pełna rozpiska na https://ttvu.link/${argumentClean}`
 }

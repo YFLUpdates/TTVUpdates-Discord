@@ -37,7 +37,7 @@ export default async function commandPoints(msg, argumentClean, args) {
     .setColor(8086271)
     .setThumbnail('https://i.imgur.com/Br5FkbV.png')
     .addFields(temp)
-    .setFooter({ text: 'yfl.es/streamer/adrian1g__' })
+    .setFooter({ text: 'ttvu.link/streamer/adrian1g__' })
     .setTimestamp();
 
     
@@ -45,7 +45,7 @@ export default async function commandPoints(msg, argumentClean, args) {
 
     return null;
 
-    return `Najwięcej punktów mają: ${topka} - https://yfl.es/streamer/adrian1g__`;
+    return `Najwięcej punktów mają: ${topka} - https://ttvu.link/streamer/adrian1g__`;
   }
   
   if (argumentClean === "send") {
@@ -63,7 +63,7 @@ export default async function commandPoints(msg, argumentClean, args) {
     const points = await getPoints(discordID, "adrian1g__");
 
     if (points === null || points.points === null) {
-      return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc "+discordID+"`"} na kanale adrian1g__`;
+      return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc "+discordID+"`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
     }
 
     if (betPoints > points.points) {

@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, GatewayIntentBits } from "discord.js";
+import { Client, EmbedBuilder, GatewayIntentBits, ActivityType } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
 import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory } from "./command/index.js";
@@ -30,9 +30,41 @@ app.use((req, res, next) => {
 
 app.listen(PORT, () => console.log(`API Server listening on port ${PORT}`));
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`)
+
+  const statusArray = [
+    {
+      content: 'ttvu.link',
+      type: ActivityType.Playing,
+      url: 'https://ttvu.link'
+    },
+    {
+      content: 'buycoffee.to/docchi',
+      type: ActivityType.Competing,
+      url: 'https://buycoffee.to/docchi'
+    },
+    {
+      content: 'docchi.pl',
+      type: ActivityType.Watching,
+      url: 'https://docchi.pl'
+    }
+  ]
+
+  setInterval(() => {
+    let random = Math.floor(Math.random() * statusArray.length)
+    client.user.setPresence({
+      activities: [
+        {
+          name: statusArray[random].content,
+          type: statusArray[random].type,
+          url: statusArray[random].url
+        }
+      ],
+      status: 'idle'
+    })
+  }, 1000 * 60);
+})
 
 client.on("messageCreate", async (msg) => {
   if (!msg.content.startsWith('!')) return;

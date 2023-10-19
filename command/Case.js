@@ -5,6 +5,14 @@ import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
+const checkClean = (arg) => {
+  if (['lista', 'list', 'szansa', 'chance'].includes(arg)) {
+    return null
+  }
+
+  return arg;
+}
+
 export default async function commandCase(msg, argumentClean, args) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
 
@@ -15,7 +23,7 @@ export default async function commandCase(msg, argumentClean, args) {
   const discordID = msg.author.id;
 
   if (!argumentClean) {
-    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Drop pod: szansa (np. !case chance snake).`;
+    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Inne argumenty: szansa, lista (np. !case chance snake).`;
   }
 
   if (["szansa", "chance"].includes(argumentClean)) {
@@ -26,26 +34,39 @@ export default async function commandCase(msg, argumentClean, args) {
     const nameCase = args[1];
 
     if (["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
     }
     // else if ("cobble".includes(nameCase)) {
     //   return `<@${discordID}>, Szansa na drop: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
     // }
   }
 
-  if (!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)) {
-    return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
+  if(["lista", "list"].includes(argumentClean)) {
+    if(args.length < 2 || !args[1]) {
+      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
+    }
+
+    const nameCase = args[1];
+
+    if(["nightmare", "riptide", "snake", "huntsman", "cobble"].includes(nameCase)) {
+      return `<@${discordID}>, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
+    }
   }
+  
+  const data = cases[checkClean(argumentClean) || args[1]];
 
-  const data = cases[argumentClean];
-  const points = await getPoints(discordID, "adrian1g__");
-
-  if (points === null || points.points === null) {
-    return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale adrian1g__`;
+  if(!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)){
+    return `<@${discordID}>}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
-
-  if (data.cost > points.points) {
-    return `<@${discordID}>,  nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha `;
+  
+  const userInfo = await getPoints(discordID, "adrian1g__");
+  
+  if (userInfo === null || userInfo.points === null) {
+    return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
+  }
+  
+  if (data.cost > userInfo.points) {
+    return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha (masz ${userInfo.points} pkt)`;
   }
 
   const rolledNumber = await rollColor();
@@ -58,7 +79,7 @@ export default async function commandCase(msg, argumentClean, args) {
   const updatePoints = await gambleUpdate(
     "adrian1g__",
     `-${data.cost}`,
-    points.user_login
+    userInfo.user_login
   );
 
   if (updatePoints === null) {
@@ -66,7 +87,7 @@ export default async function commandCase(msg, argumentClean, args) {
   }
 
   const addItem = await CreateItem(
-    points.user_login,
+    userInfo.user_login,
     `[${skin.rarity}] ${skin.name}`,
     skin.price,
     skin.image,
