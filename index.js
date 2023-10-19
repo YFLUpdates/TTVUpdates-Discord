@@ -125,7 +125,7 @@ client.on("messageCreate", async (msg) => {
         const embed = new EmbedBuilder()
           .setColor(8086271)
           .setAuthor({ name: `Komenda - Points`, iconURL: `https://ttvu.link/logo512.png` })
-          .setDescription('**Opis:** Pokazuje liczbe punktów oraz możesz robić transfer punktów')
+          .setDescription('**Opis:** Pokazuje liczbe punktów oraz pozwala zrobić transfer punktów')
           .setThumbnail(`https://ttvu.link/logo512.png`)
           .addFields(
             { name: `❯ Użycie komendy:`, value: `!points\n!points 3xanax\n!points ranking\n!points send 3xanax 100` },
@@ -337,7 +337,7 @@ client.on("messageCreate", async (msg) => {
           { name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.` },
           { name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci` },
           { name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki` },
-          { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz możesz robić transfer punktów` },
+          { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz pozwala zrobić transfer punktów` },
           { name: `❯ !cmd [info]`, value: `Pokazuje informacje o komendzie` },
         )
         .setImage(`https://ttvu.link/og-default.png`)
