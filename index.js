@@ -35,19 +35,20 @@ client.on('ready', () => {
 
   const statusArray = [
     {
-      content: 'ttvu.link',
-      type: ActivityType.Playing,
-      url: 'https://ttvu.link'
+      content: 'https:/\/ttvu.link',
+      type: ActivityType.Playing
     },
     {
-      content: 'buycoffee.to/docchi',
-      type: ActivityType.Competing,
-      url: 'https://buycoffee.to/docchi'
+      content: 'https:/\/buycoffee.to/docchi',
+      type: ActivityType.Competing
     },
     {
-      content: 'docchi.pl',
-      type: ActivityType.Watching,
-      url: 'https://docchi.pl'
+      content: 'https:/\/docchi.pl',
+      type: ActivityType.Watching
+    },
+    {
+      content: '!pomoc dla listy komend',
+      type: ActivityType.Custom
     }
   ]
 
@@ -57,8 +58,7 @@ client.on('ready', () => {
       activities: [
         {
           name: statusArray[random].content,
-          type: statusArray[random].type,
-          url: statusArray[random].url
+          type: statusArray[random].type
         }
       ],
       status: 'idle'
