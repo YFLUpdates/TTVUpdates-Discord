@@ -2,6 +2,7 @@ import getPoints from "../requests/getPoints.js";
 import duelUpdate from "../requests/duelUpdate.js";
 import getRanking from "../requests/getRanking.js";
 import { aha, aok, hm, jasperTragedia } from "../functions/slots/data/discordEmotes.js";
+
 import { EmbedBuilder } from "discord.js";
 
 export default async function commandPoints(msg, argumentClean, args) {
@@ -12,6 +13,24 @@ export default async function commandPoints(msg, argumentClean, args) {
   }
   
   const discordID = msg.author.id;
+
+  if(["info"].includes(argumentClean)) {
+		const embed = new EmbedBuilder()
+		  .setColor(8086271)
+		  .setAuthor({ name: `Komenda - Points`, iconURL: `https://ttvu.link/logo512.png`})
+		  .setDescription('**Opis:** Pokazuje liczbe punktów oraz możesz robić transfer punktów')
+		  .setThumbnail(`https://ttvu.link/logo512.png`)
+		  .addFields(
+			{ name: `❯ Użycie komendy:`, value: `!points\n!points 3xanax\n!points ranking\n!points send 3xanax 100` },
+			{ name: `❯ Argumenty:`, value: `user, ranking, send, kwota` },
+			{ name: `❯ Aliasy:`, value: `!punkty` },
+		  )
+		  .setImage(`https://ttvu.link/og-default.png`)
+		  .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+		  .setTimestamp();
+	
+		return msg.channel.send({ embeds: [embed] });
+	}
 
   if (argumentClean === "ranking") {
     const topka = await getRanking();

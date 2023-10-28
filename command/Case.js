@@ -5,6 +5,8 @@ import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
+import { EmbedBuilder } from 'discord.js'
+
 const checkClean = (arg) => {
   if (['lista', 'list', 'szansa', 'chance'].includes(arg)) {
     return null
@@ -21,6 +23,24 @@ export default async function commandCase(msg, argumentClean, args) {
   }
 
   const discordID = msg.author.id;
+
+  if (['info'].includes(argumentClean)) {
+		const embed = new EmbedBuilder()
+			.setColor(8086271)
+			.setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+			.setDescription('**Opis:** Otwieranie skrzynek')
+			.setThumbnail(`https://ttvu.link/logo512.png`)
+			.addFields(
+				{ name: `❯ Użycie komendy:`, value: `!case snake\n!case chance snake\n!case lista snake` },
+				{ name: `❯ Argumenty:`, value: `**Skrzynki:** snake, nightmare, riptide, cobble, huntsman\n**Inne:** chance, szansa, lista, list`},
+				{ name: `❯ Aliasy:`, value: `!skrzynka, !skrzynia, !crate` }
+			)
+			.setImage(`https://ttvu.link/og-default.png`)
+			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+			.setTimestamp()
+
+		return msg.channel.send({ embeds: [embed] })
+	}
 
   if (!argumentClean) {
     return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Inne argumenty: szansa, lista (np. !case chance snake).`;

@@ -3,6 +3,7 @@ import duelUpdate from "../requests/duelUpdate.js";
 import rollingNumber from "../functions/duel/rollingNumber.js"
 import Truncate from "../functions/duel/Truncate.js";
 
+import { EmbedBuilder } from "discord.js";
 
 export default async function commandDuel(msg, argumentClean, args, session_settings) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
@@ -12,6 +13,24 @@ export default async function commandDuel(msg, argumentClean, args, session_sett
   }
 
   const discordID = msg.author.id;
+
+  if(["info"].includes(argumentClean)) {
+    const embed = new EmbedBuilder()
+      .setColor(8086271)
+      .setAuthor({ name: `Komenda - Duel`, iconURL: `https://ttvu.link/logo512.png`})
+      .setDescription('**Opis:** Zaproś na pojedynek o punkty')
+      .setThumbnail(`https://ttvu.link/logo512.png`)
+      .addFields(
+      { name: `❯ Użycie komendy:`, value: `!duel 3xanax 100\n!duel list` },
+      { name: `❯ Argumenty:`, value: `user, list, kwota` },
+      { name: `❯ Aliasy:`, value: `!pojedynek` },
+      )
+      .setImage(`https://ttvu.link/og-default.png`)
+      .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+      .setTimestamp();
+  
+    return msg.channel.send({ embeds: [embed] });
+  }
 
   const duelsList = session_settings[`adrian1g__`].duels_list
 

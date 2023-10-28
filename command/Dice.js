@@ -4,6 +4,8 @@ import { aha, fire, jasperAktywacja, jasperBoobsy, jasperSmiech, okurwa } from "
 import gambleUpdate from "../requests/gambleUpdate.js";
 import getPoints from "../requests/getPoints.js";
 
+import { EmbedBuilder } from "discord.js";
+
 export default async function commandDice(msg, argumentClean) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
 
@@ -12,6 +14,24 @@ export default async function commandDice(msg, argumentClean) {
   }
 
   const discordID = msg.author.id;
+
+  if(["info"].includes(argumentClean)) {
+    const embed = new EmbedBuilder()
+      .setColor(8086271)
+      .setAuthor({ name: `Komenda - Dice`, iconURL: `https://ttvu.link/logo512.png`})
+      .setDescription('**Opis:** Rzuć kostkami o punkty')
+      .setThumbnail(`https://ttvu.link/logo512.png`)
+      .addFields(
+      { name: `❯ Użycie komendy:`, value: `!dice 100` },
+      { name: `❯ Argumenty:`, value: `kwota` },
+      { name: `❯ Aliasy:`, value: `!kosci` },
+      )
+      .setImage(`https://ttvu.link/og-default.png`)
+      .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+      .setTimestamp();
+  
+    return msg.channel.send({ embeds: [embed] });
+  }
 
   if (argumentClean === "procenty") {
     return `<@${discordID}>\nWygrana x2 - **25%**\nWygrana x33 - **0.46%**\nWygrana x66 - **0.46%**`;
