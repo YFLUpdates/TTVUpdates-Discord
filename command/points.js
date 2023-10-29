@@ -14,7 +14,7 @@ export default async function commandPoints(msg, argumentClean, args) {
   
   const discordID = msg.author.id;
 
-  if(["info"].includes(argumentClean)) {
+  if(argumentClean === "info") {
 		const embed = new EmbedBuilder()
 		  .setColor(8086271)
 		  .setAuthor({ name: `Komenda - Points`, iconURL: `https://ttvu.link/logo512.png`})
@@ -29,7 +29,7 @@ export default async function commandPoints(msg, argumentClean, args) {
 		  .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
 		  .setTimestamp();
 	
-		return msg.channel.send({ embeds: [embed] });
+		return { embeds: [embed] };
 	}
 
   if (argumentClean === "ranking") {
@@ -60,11 +60,7 @@ export default async function commandPoints(msg, argumentClean, args) {
     .setTimestamp();
 
     
-    msg.channel.send({ embeds: [embed] });
-
-    return null;
-
-    return `Najwięcej punktów mają: ${topka} - https://ttvu.link/streamer/adrian1g__`;
+    return { embeds: [embed] };
   }
   
   if (argumentClean === "send") {

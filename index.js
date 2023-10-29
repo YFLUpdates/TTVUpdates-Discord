@@ -17,6 +17,8 @@ const PORT = process.env.PORT || 3000;
 let cooldown = 0;
 let cooldownSpecial = 0;
 
+const duels_list = [];
+
 app.set("json spaces", 2);
 app.use(express.json());
 
@@ -69,14 +71,6 @@ client.on('ready', () => {
 client.on("messageCreate", async (msg) => {
   if (!msg.content.startsWith('!')) return;
 
-  const channel_settings = {
-    "adrian1g__": {
-      "duels_list": [],
-    }
-  }
-  
-  const session_settings = await channel_settings
-
   const args = msg.content.slice(1).split(" ");
   const command = args.shift().toLowerCase();
   const argumentClean = args[0]
@@ -121,7 +115,7 @@ client.on("messageCreate", async (msg) => {
     case 'ekwipunek':
     case 'eq':
     case 'inventory':
-	  case 'inv': {
+    case 'inv': {
       if (cooldown > Date.now() - 2000) {
         break;
       }
@@ -174,7 +168,7 @@ client.on("messageCreate", async (msg) => {
     case 'skrzynka':
     case 'case':
     case 'skrzynia':
-	  case 'crate': {
+    case 'crate': {
 
       if (cooldown > Date.now() - 2000) {
         break;
@@ -191,14 +185,14 @@ client.on("messageCreate", async (msg) => {
 
       break;
     }
-    case 'duel': 
+    case 'duel':
     case 'pojedynek': {
       if (cooldown > Date.now() - 2000) {
         break;
       }
       cooldown = Date.now();
 
-      const command = await Duel(msg, argumentClean, args, session_settings["adrian1g__"]);
+      const command = await Duel(msg, argumentClean, args, duels_list);
 
       if (command === null) {
         break;
@@ -244,22 +238,22 @@ client.on("messageCreate", async (msg) => {
     case 'pomoc':
     case 'help': {
       const embed = new EmbedBuilder()
-		.setColor(8086271)
-		.setAuthor({ name: `POMOC | Lista Komend`, iconURL: `https://ttvu.link/logo512.png`})
-		.setDescription(`[Strona Internetowa](http://ttvu.link)\n[GitHub](https://github.com/YFLUpdates/ttvupdates-discord)`)
-		.setThumbnail(`https://ttvu.link/logo512.png`)
-		.addFields(
-			{ name: `❯ !case [chance/lista]`, value: `Otwieranie skrzynek` },
-			{ name: `❯ !dice {kwota}`, value: `Rzuć kostkami o punkty` },
-			{ name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.`},
-			{ name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci`},
-			{ name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki`},
-			{ name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz pozwala zrobić transfer punktów`},
-			{ name: `❯ !cmd [info]`, value: `Pokazuje informacje o komendzie`},
-		)
-		.setImage(`https://ttvu.link/og-default.png`)
-		.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
-		.setTimestamp();
+        .setColor(8086271)
+        .setAuthor({ name: `POMOC | Lista Komend`, iconURL: `https://ttvu.link/logo512.png` })
+        .setDescription(`[Strona Internetowa](http://ttvu.link)\n[GitHub](https://github.com/YFLUpdates/ttvupdates-discord)`)
+        .setThumbnail(`https://ttvu.link/logo512.png`)
+        .addFields(
+          { name: `❯ !case [chance/lista]`, value: `Otwieranie skrzynek` },
+          { name: `❯ !dice {kwota}`, value: `Rzuć kostkami o punkty` },
+          { name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.` },
+          { name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci` },
+          { name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki` },
+          { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz pozwala zrobić transfer punktów` },
+          { name: `❯ !cmd [info]`, value: `Pokazuje informacje o komendzie` },
+        )
+        .setImage(`https://ttvu.link/og-default.png`)
+        .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+        .setTimestamp();
 
 
       msg.channel.send({ embeds: [embed] });

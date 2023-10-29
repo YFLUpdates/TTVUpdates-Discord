@@ -39,7 +39,7 @@ export default async function commandCase(msg, argumentClean, args) {
 			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
 			.setTimestamp()
 
-		return msg.channel.send({ embeds: [embed] })
+		return { embeds: [embed] };
 	}
 
   if (!argumentClean) {

@@ -1,7 +1,7 @@
 import getPoints from "../requests/getPoints.js";
 import { rollColor, multiplyColor, emojiColor } from "../functions/roulette/index.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
-import { beka, fire, jasperBoobsy, okurwa, aha } from "../functions/slots/data/discordEmotes.js";
+import { beka, fire, okurwa, aha } from "../functions/slots/data/discordEmotes.js";
 
 import { EmbedBuilder } from "discord.js";
 
@@ -14,7 +14,7 @@ export default async function commandRoulette(msg, argumentClean, args) {
 
     const discordID = msg.author.id;
 
-    if (['info'].includes(argumentClean)) {
+    if (argumentClean === "info") {
 		const embed = new EmbedBuilder()
 			.setColor(8086271)
 			.setAuthor({ name: `Komenda - Roulette`, iconURL: `https://ttvu.link/logo512.png` })
@@ -30,17 +30,17 @@ export default async function commandRoulette(msg, argumentClean, args) {
 			)
 			.setImage(`https://ttvu.link/og-default.png`)
 			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
-			.setTimestamp()
+			.setTimestamp();
 
-		return msg.channel.send({ embeds: [embed] })
+		return { embeds: [embed] };
 	}
+    
+    if (!argumentClean || !["red", "black", "green", "blue", "orange"].includes(argumentClean)) {
+        return `<@${discordID}>, zapomniałeś/aś o kolorze red - **(x2)**, black - **(x2)**, blue - **(x3)**, orange - **(x5)**, green - **(x14)** `;
+    }
 
     if (argumentClean === "procenty") {
         return `<@${discordID}>\nCzarny, Czerwony - **38%**\nNiebieski - **22%**\nPomarańczowy - **5%**\nZielony - **5%**`;
-    }
-
-    if (!argumentClean || !["red", "black", "green", "blue", "orange"].includes(argumentClean)) {
-        return `<@${discordID}>, zapomniałeś/aś o kolorze red - **(x2)**, black - **(x2)**, blue - **(x3)**, orange - **(x5)**, green - **(x14)** `;
     }
 
     if (!args[1]) {

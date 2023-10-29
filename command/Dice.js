@@ -1,6 +1,6 @@
 import multiplyDice from "../functions/multiplyDice.js";
 import rollDice from "../functions/rollDice.js";
-import { aha, fire, jasperAktywacja, jasperBoobsy, jasperSmiech, okurwa } from "../functions/slots/data/discordEmotes.js";
+import { aha, fire, jasperAktywacja, jasperSmiech, okurwa } from "../functions/slots/data/discordEmotes.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import getPoints from "../requests/getPoints.js";
 
@@ -15,7 +15,11 @@ export default async function commandDice(msg, argumentClean) {
 
   const discordID = msg.author.id;
 
-  if(["info"].includes(argumentClean)) {
+  if (!argumentClean) {
+    return `<@${discordID}>, zapomniałeś/aś o kwocie `;
+  }
+
+  if(argumentClean === "info") {
     const embed = new EmbedBuilder()
       .setColor(8086271)
       .setAuthor({ name: `Komenda - Dice`, iconURL: `https://ttvu.link/logo512.png`})
@@ -30,34 +34,32 @@ export default async function commandDice(msg, argumentClean) {
       .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
       .setTimestamp();
   
-    return msg.channel.send({ embeds: [embed] });
+    return { embeds: [embed] };
   }
 
   if (argumentClean === "procenty") {
     return `<@${discordID}>\nWygrana x2 - **25%**\nWygrana x33 - **0.46%**\nWygrana x66 - **0.46%**`;
   }
-  const points = await getPoints(discordID, "adrian1g__");
 
-  if (!argumentClean) {
-    return `<@${discordID}>, zapomniałeś/aś o kwocie `;
-  }
+  const betPoints = Number(argumentClean);
 
-  if (Number(argumentClean) > 5000 || Number(argumentClean) <= 0 || isNaN(argumentClean)) {
+  if (betPoints > 5000 || betPoints <= 0 || isNaN(argumentClean)) {
     return `<@${discordID}>, maksymalnie można obstawić 5000 punktów `;
   }
+
+  const points = await getPoints(discordID, "adrian1g__");
 
   if (points === null || points.points === null) {
     return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
 
-  if (Number(argumentClean) > points.points) {
+  if (betPoints > points.points) {
     return `<@${discordID}> nie masz tylu punktów ${aha} (masz ${points.points} pkt)`
   }
 
   const dice1 = await rollDice();
   const dice2 = await rollDice();
   const dice3 = await rollDice();
-  const betPoints = Number(argumentClean);
   const multiplyAmount = multiplyDice(dice1, dice2, dice3);
 
   if (multiplyAmount === null) {

@@ -46,7 +46,7 @@ export const cases = {
         },
         "gold": {
             "from": 98.31,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "Rękawice Broken Fang (★) | Żółtopasy", "price": 66614, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_poison_frog_black_yellow_light_large.288cab790af6a199b856678af930756e2fbb27ed.png"},
                 {"name": "Rękawice Broken Fang (★) | Nieposkromiony", "price": 40512, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_snakeskin_black_light_large.66371a4c81360f765a00c334492edeb05f2bbb79.png"},
@@ -122,7 +122,7 @@ export const cases = {
         },
         "gold": {
             "from": 98.31,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "Nóż Bowie (★) | Gamma Doppler", "price": 41593, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_am_emerald_marbleized_light_large.a30b95a1a77d51fb98fd6d3907681a585a80fdc9.png"},
                 {"name": "Nóż Bowie (★) | Wiedza", "price": 60798, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_cu_bowie_lore_light_large.83091fde14cb5dea85805779420387bdd18c6126.png"},
@@ -204,7 +204,7 @@ export const cases = {
         },
         "gold": {
             "from": 98.31,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "Nóż Bowie (★) | Gamma Doppler", "price": 41593, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_am_emerald_marbleized_light_large.a30b95a1a77d51fb98fd6d3907681a585a80fdc9.png"},
                 {"name": "Nóż Bowie (★) | Wiedza", "price": 60798, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_cu_bowie_lore_light_large.83091fde14cb5dea85805779420387bdd18c6126.png"},
@@ -289,7 +289,7 @@ export const cases = {
         },
         "gold": {
             "from": 98.31,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "Nóż myśliwski (★) | Gradient", "price": 56275, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_aa_fade_light.png"},
                 {"name": "Nóż myśliwski (★) | Szkarłatna sieć", "price": 131900, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_hy_webs_light.png"},
@@ -352,7 +352,7 @@ export const cases = {
         },
         "gold": {
             "from": 100,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "AWP | Smocza wiedza", "price": 1207400, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"},
                 {"name": "Souvenir AWP | Smocza wiedza", "price": 12810100, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"}            
@@ -398,7 +398,7 @@ export const cases = {
         },
         "red": {
             "from": 73.50,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "Wilk ESL (foliowana) | Katowice 2014", "price": 77531, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/stickers/emskatowice2014/wolf_esl_foil_large.49d7d28f6a286dad51fa2667ad53c70cd60198dd.png"}
             ]
@@ -448,7 +448,7 @@ export const cases = {
         },
         "red": {
             "from": 73.50,
-            "to": 100.99,
+            "to": 100.00,
             "skins": [
                 {"name": "Czaszka ESL (foliowana) | Katowice 2014", "price": 57437, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/stickers/emskatowice2014/wolf_skull_esl_foil_large.b356051007f82cc22b250e1bef8c62e026755e55.png"}
             ]
