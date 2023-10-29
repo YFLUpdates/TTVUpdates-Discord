@@ -38,7 +38,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 	if (['info'].includes(argumentClean)) {
 		const embed = new EmbedBuilder()
 			.setColor(8086271)
-			.setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+			.setAuthor({ name: `Komenda - Ekwipunek`, iconURL: `https://ttvu.link/logo512.png` })
 			.setDescription('**Opis:** Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.')
 			.setThumbnail(`https://ttvu.link/logo512.png`)
 			.addFields(
