@@ -18,7 +18,7 @@ export const cases = {
         },
         "blue": {
             "from": 53.74,
-            "to": 77.40,
+            "to": 76.40,
             "skins": [
                 {"name": "P250 | Cyberpowłoka", "price": 120, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_p250_gs_p250_cybershell_light_large.9f0408cde898dd81609541a8e68ff1ffe81320fd.png"},
                 {"name": "Negev | dev_texture", "price": 116, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_negev_cu_negev_devtexture_light_large.a0c6f2fcbac9d473d7b9d0452773843c284683e3.png"},
@@ -28,8 +28,8 @@ export const cases = {
             ]
         },
         "purple": {
-            "from": 77.41,
-            "to": 89.70,
+            "from": 76.41,
+            "to": 88.70,
             "skins": [
                 {"name": "MP9 | Łańcuch pokarmowy", "price": 817, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_mp9_cu_mp9_food_chain_light_large.5895f4cc864387a61a3783470037e6ed1953f7df.png"},
                 {"name": "XM1014 | XOXO", "price": 786, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_xm1014_aq_xm1014_punk_light_large.8c6eb5bcf234179713a52b1a5e22c64c21c52007.png"},
@@ -37,16 +37,16 @@ export const cases = {
             ]
         },
         "red": {
-            "from": 89.71,
-            "to": 98.30,
+            "from": 88.71,
+            "to": 97.30,
             "skins": [
                 {"name": "USP-S | Zdrajca", "price": 5385, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_usp_silencer_gs_usps_hangedman_light_large.a01890fdeb8335437df7af6641a7b4f6e2fcca34.png"},
                 {"name": "M4A4 | W żywe kolory", "price": 4218, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_m4a1_cu_m4a4_love_light_large.5f7f6a3085aedc1a878dd10881144e7898a2db3d.png"}
             ]
         },
         "gold": {
-            "from": 98.31,
-            "to": 100.99,
+            "from": 97.31,
+            "to": 100.00,
             "skins": [
                 {"name": "Rękawice Broken Fang (★) | Żółtopasy", "price": 66614, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_poison_frog_black_yellow_light_large.288cab790af6a199b856678af930756e2fbb27ed.png"},
                 {"name": "Rękawice Broken Fang (★) | Nieposkromiony", "price": 40512, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_snakeskin_black_light_large.66371a4c81360f765a00c334492edeb05f2bbb79.png"},
@@ -94,7 +94,7 @@ export const cases = {
         },
         "blue": {
             "from": 53.74,
-            "to": 77.40,
+            "to": 76.40,
             "skins": [
                 {"name": "MAG-7 | BI83 Spectrum", "price": 210, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_mag7_gs_mag7_bismuth_light_large.f5df59b5024b23a1ca187985b7650e337adda4b4.png"},
                 {"name": "FAMAS | ZX Spectron", "price": 642, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_famas_cu_famas_spectron_light_large.5212ab188ec7d54b55d4280c3b508b11b1f567ed.png"},
@@ -104,8 +104,8 @@ export const cases = {
             ]
         },
         "purple": {
-            "from": 77.41,
-            "to": 89.70,
+            "from": 76.41,
+            "to": 88.70,
             "skins": [
                 {"name": "MAC-10 | Pudełko zabawek", "price": 1452, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_mac10_cu_mac10_toybox_light_large.0eaa520b37c7d53ed3ef541e59d2303714c7e21d.png"},
                 {"name": "Glock-18 | Atak smakołyków", "price": 1883, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_glock_cu_glock_snackattack_light_large.145d863714fb0fd6f766ef28f3639c0efded5018.png"},
@@ -113,16 +113,16 @@ export const cases = {
             ]
         },
         "red": {
-            "from": 89.71,
-            "to": 98.30,
+            "from": 88.71,
+            "to": 97.30,
             "skins": [
                 {"name": "AK-47 | Leet museo", "price": 5371, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_ak47_gs_ak47_abstract_light_large.c0eca2ab0cee2c60491b9b64358f72ae4398e78a.png"},
                 {"name": "Desert Eagle | Nadmorska ulica", "price": 14754, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_deagle_cu_deagle_kitch_light_large.0df9b5246d27786b413642f5fc959f37d8892c3a.png"}
             ]
         },
         "gold": {
-            "from": 98.31,
-            "to": 100.99,
+            "from": 97.31,
+            "to": 100.00,
             "skins": [
                 {"name": "Nóż Bowie (★) | Gamma Doppler", "price": 41593, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_am_emerald_marbleized_light_large.a30b95a1a77d51fb98fd6d3907681a585a80fdc9.png"},
                 {"name": "Nóż Bowie (★) | Wiedza", "price": 60798, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_cu_bowie_lore_light_large.83091fde14cb5dea85805779420387bdd18c6126.png"},
@@ -176,7 +176,7 @@ export const cases = {
         },
         "blue": {
             "from": 53.74,
-            "to": 77.40,
+            "to": 76.40,
             "skins": [
                 {"name": "PP-Bizon | Kosmiczny kot", "price": 130, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_bizon_cu_bizon_spacecat_light_large.c2c9bbf949c4bdf2ce3173cd2447559177716dd3.png"},
                 {"name": "G3SG1 | Polana snów", "price": 127, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_g3sg1_cu_g3sg1_glade_light_large.93e176857183136f472c81b75331929d7b51d3ad.png"},
@@ -187,7 +187,7 @@ export const cases = {
         },
         "purple": {
             "from": 77.41,
-            "to": 89.70,
+            "to": 88.70,
             "skins": [
                 {"name": "Dwie beretty | Szajbuzy", "price": 978, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_elite_cu_elites_beware_light_large.3a4517010e237136f9cca5c593beedd94a2a0a15.png"},
                 {"name": "FAMAS | Szybkie rozeznanie", "price": 1058, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_famas_gs_famas_rapid_eyes_light_large.8a166e6d36121b16dddc11b9aca94d5c541b0b56.png"},
@@ -196,15 +196,15 @@ export const cases = {
         },
         "red": {
             "from": 89.71,
-            "to": 98.30,
+            "to": 97.30,
             "skins": [
                 {"name": "AK-47 | Nocne życzenie", "price": 10938, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_ak47_cu_ak47_nightwish_light_large.0c4581be094e2bd732bec18ebdad2f71b1018af2.png"},
                 {"name": "MP9 | Obrońca gwiezdnego światła", "price": 2342, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_mp9_gs_mp9_starlight_light_large.79d29560c71c4ba592824c1a1e3a8172cc7269be.png"}
             ]
         },
         "gold": {
-            "from": 98.31,
-            "to": 100.99,
+            "from": 97.31,
+            "to": 100.00,
             "skins": [
                 {"name": "Nóż Bowie (★) | Gamma Doppler", "price": 41593, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_am_emerald_marbleized_light_large.a30b95a1a77d51fb98fd6d3907681a585a80fdc9.png"},
                 {"name": "Nóż Bowie (★) | Wiedza", "price": 60798, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_survival_bowie_cu_bowie_lore_light_large.83091fde14cb5dea85805779420387bdd18c6126.png"},
@@ -260,7 +260,7 @@ export const cases = {
         },
         "blue": {
             "from": 53.74,
-            "to": 77.40,
+            "to": 76.40,
             "skins": [
                 {"name": "AUG | Moment siły", "price": 895, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_aug_cu_aug_progressiv_light.png"},
                 {"name": "PP-Bizon | Antyk", "price": 891, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_bizon_cu_bizon_antique_light.png"},
@@ -270,8 +270,8 @@ export const cases = {
             ]
         },
         "purple": {
-            "from": 77.41,
-            "to": 89.70,
+            "from": 76.41,
+            "to": 88.70,
             "skins": [
                 {"name": "M4A1-S | Stop atomowy", "price": 8725, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_silencer_am_m4a1-s_alloy_orange_light.png"},
                 {"name": "SCAR-20 | Cyrex", "price": 5311, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_scar20_cu_scar_cyrex_light.png"},
@@ -280,16 +280,16 @@ export const cases = {
             ]
         },
         "red": {
-            "from": 89.71,
-            "to": 98.30,
+            "from": 88.71,
+            "to": 97.30,
             "skins": [
                 {"name": "AK-47 | Wulkan", "price": 79059, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_ak47_cu_ak47_rubber_light.png"},
                 {"name": "M4A4 | Pustynny szturm", "price": 911, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_cu_titanstorm_light.png"}
             ]
         },
         "gold": {
-            "from": 98.31,
-            "to": 100.99,
+            "from": 97.31,
+            "to": 100.00,
             "skins": [
                 {"name": "Nóż myśliwski (★) | Gradient", "price": 56275, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_aa_fade_light.png"},
                 {"name": "Nóż myśliwski (★) | Szkarłatna sieć", "price": 131900, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_knife_tactical_hy_webs_light.png"},
@@ -313,7 +313,7 @@ export const cases = {
         "cost": 30000,
         "white": {
             "from": 0,
-            "to": 58.20,
+            "to": 57.20,
             "skins": [
                 {"name": "P90 | Burza", "price": 1581, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_p90_so_stormfront_light.png"},
                 {"name": "SCAR-20 | Burza", "price": 1078, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_scar20_so_stormfront_light.png"},
@@ -323,8 +323,8 @@ export const cases = {
             ]
         },
         "blue": {
-            "from": 58.21,
-            "to": 84,
+            "from": 57.21,
+            "to": 83,
             "skins": [
                 {"name": "MAG-7 | Srebro", "price": 1223, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_mag7_an_silver_light.png"},
                 {"name": "Nova | Zielone jabłuszko", "price": 1186, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_nova_so_green_light.png"},
@@ -335,24 +335,24 @@ export const cases = {
             ]
         },
         "purple": {
-            "from": 84.01,
-            "to": 97.80,
+            "from": 83.01,
+            "to": 96.80,
             "skins": [
                 {"name": "CZ75-Auto | Kielich", "price": 42835, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_cz75a_am_royal_light.png"},
                 {"name": "Desert Eagle | Działo ręczne", "price": 44517, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_deagle_aq_handcannon_light.png"}
             ]
         },
         "red": {
-            "from": 97.81,
-            "to": 99.99,
+            "from": 96.81,
+            "to": 98.99,
             "skins": [
                 {"name": "M4A1-S | Rycerz", "price": 287300, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_silencer_am_metals_light.png"},
                 {"name": "Souvenir M4A1-S | Rycerz", "price": 161100, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_silencer_am_metals_light.png"}
             ]
         },
         "gold": {
-            "from": 100,
-            "to": 100.99,
+            "from": 99,
+            "to": 100,
             "skins": [
                 {"name": "AWP | Smocza wiedza", "price": 1207400, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"},
                 {"name": "Souvenir AWP | Smocza wiedza", "price": 12810100, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"}            
@@ -398,7 +398,7 @@ export const cases = {
         },
         "red": {
             "from": 73.50,
-            "to": 100.99,
+            "to": 100,
             "skins": [
                 {"name": "Wilk ESL (foliowana) | Katowice 2014", "price": 77531, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/stickers/emskatowice2014/wolf_esl_foil_large.49d7d28f6a286dad51fa2667ad53c70cd60198dd.png"}
             ]
@@ -448,7 +448,7 @@ export const cases = {
         },
         "red": {
             "from": 73.50,
-            "to": 100.99,
+            "to": 100,
             "skins": [
                 {"name": "Czaszka ESL (foliowana) | Katowice 2014", "price": 57437, "image": "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/stickers/emskatowice2014/wolf_skull_esl_foil_large.b356051007f82cc22b250e1bef8c62e026755e55.png"}
             ]
