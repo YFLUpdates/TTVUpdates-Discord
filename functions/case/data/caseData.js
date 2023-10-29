@@ -351,8 +351,8 @@ export const cases = {
             ]
         },
         "gold": {
-            "from": 99,
-            "to": 100,
+            "from": 99.00,
+            "to": 100.00,
             "skins": [
                 {"name": "AWP | Smocza wiedza", "price": 1207400, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"},
                 {"name": "Souvenir AWP | Smocza wiedza", "price": 12810100, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"}            
