@@ -191,7 +191,8 @@ client.on("messageCreate", async (msg) => {
 
       break;
     }
-    case 'duel': {
+    case 'duel': 
+    case 'pojedynek': {
       if (cooldown > Date.now() - 2000) {
         break;
       }
