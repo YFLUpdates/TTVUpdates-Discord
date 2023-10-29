@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, GatewayIntentBits, ActivityType } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
-import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory } from "./command/index.js";
+import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel } from "./command/index.js";
 
 dotenv.config();
 
@@ -16,6 +16,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 let cooldown = 0;
 let cooldownSpecial = 0;
+
+const duels_list = [];
 
 app.set("json spaces", 2);
 app.use(express.json());
@@ -35,19 +37,20 @@ client.on('ready', () => {
 
   const statusArray = [
     {
-      content: 'ttvu.link',
-      type: ActivityType.Playing,
-      url: 'https://ttvu.link'
+      content: 'https:/\/ttvu.link',
+      type: ActivityType.Playing
     },
     {
-      content: 'buycoffee.to/docchi',
-      type: ActivityType.Competing,
-      url: 'https://buycoffee.to/docchi'
+      content: 'https:/\/buycoffee.to/docchi',
+      type: ActivityType.Competing
     },
     {
-      content: 'docchi.pl',
-      type: ActivityType.Watching,
-      url: 'https://docchi.pl'
+      content: 'https:/\/docchi.pl',
+      type: ActivityType.Watching
+    },
+    {
+      content: '!pomoc dla listy komend',
+      type: ActivityType.Custom
     }
   ]
 
@@ -57,8 +60,7 @@ client.on('ready', () => {
       activities: [
         {
           name: statusArray[random].content,
-          type: statusArray[random].type,
-          url: statusArray[random].url
+          type: statusArray[random].type
         }
       ],
       status: 'idle'
@@ -112,7 +114,8 @@ client.on("messageCreate", async (msg) => {
     }
     case 'ekwipunek':
     case 'eq':
-    case 'inventory': {
+    case 'inventory':
+    case 'inv': {
       if (cooldown > Date.now() - 2000) {
         break;
       }
@@ -162,9 +165,10 @@ client.on("messageCreate", async (msg) => {
 
       break;
     }
-    case 'skrzynki':
+    case 'skrzynka':
     case 'case':
-    case 'skrzynia': {
+    case 'skrzynia':
+    case 'crate': {
 
       if (cooldown > Date.now() - 2000) {
         break;
@@ -172,6 +176,23 @@ client.on("messageCreate", async (msg) => {
       cooldown = Date.now();
 
       const command = await Case(msg, argumentClean, args);
+
+      if (command === null) {
+        break;
+      }
+
+      msg.channel.send(command);
+
+      break;
+    }
+    case 'duel':
+    case 'pojedynek': {
+      if (cooldown > Date.now() - 2000) {
+        break;
+      }
+      cooldown = Date.now();
+
+      const command = await Duel(msg, argumentClean, args, duels_list);
 
       if (command === null) {
         break;
@@ -217,9 +238,21 @@ client.on("messageCreate", async (msg) => {
     case 'pomoc':
     case 'help': {
       const embed = new EmbedBuilder()
-        .setTitle("Pomoc")
         .setColor(8086271)
-        .setDescription("***»*** ``!dice {kwota/info} - Rzuć kośćmi o punkty.``\n***»*** ``!slots {kwota/info}``\n***»*** ``!ruletka {kolor/info} {kwota} - Postaw na kolor i zobacz czy wygrasz``\n***»*** ``!buy {hazardzista} - Kup specjalne role.``\n***»*** ``!punkty {puste/nick ttv} - Sprawdz punkty.``")
+        .setAuthor({ name: `POMOC | Lista Komend`, iconURL: `https://ttvu.link/logo512.png` })
+        .setDescription(`[Strona Internetowa](http://ttvu.link)\n[GitHub](https://github.com/YFLUpdates/ttvupdates-discord)`)
+        .setThumbnail(`https://ttvu.link/logo512.png`)
+        .addFields(
+          { name: `❯ !case [chance/lista]`, value: `Otwieranie skrzynek` },
+          { name: `❯ !dice {kwota}`, value: `Rzuć kostkami o punkty` },
+          { name: `❯ !eq [sell] {id}`, value: `Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.` },
+          { name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci` },
+          { name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki` },
+          { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz pozwala zrobić transfer punktów` },
+          { name: `❯ !cmd [info]`, value: `Pokazuje informacje o komendzie` },
+        )
+        .setImage(`https://ttvu.link/og-default.png`)
+        .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
         .setTimestamp();
 
 

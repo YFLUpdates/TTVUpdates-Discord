@@ -4,6 +4,8 @@ import gambleUpdate from '../requests/gambleUpdate.js'
 import getItem from '../requests/getItem.js'
 import getPoints from '../requests/getPoints.js';
 
+import { EmbedBuilder } from "discord.js";
+
 const compactNumber = (_) => Intl.NumberFormat('en', { notation: 'compact' }).format(_);
 
 export default async function commandInventory(msg, argumentClean, args) {
@@ -26,11 +28,29 @@ export default async function commandInventory(msg, argumentClean, args) {
 		if (viewer === null) {
 			return `<@${discordID}>, nie udało sie pobrać ekwipunku użytkownika, bądź ekwipunek jest pusty.`
 		}
-		
+
 		return `<@${discordID}>, posiadasz w swoim ekwipunku: ${viewer
 			.slice(0, 1)
 			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
 			.join()} - pełna rozpiska na https://ttvu.link/${points.user_login}`
+	}
+	
+	if (['info'].includes(argumentClean)) {
+		const embed = new EmbedBuilder()
+			.setColor(8086271)
+			.setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+			.setDescription('**Opis:** Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.')
+			.setThumbnail(`https://ttvu.link/logo512.png`)
+			.addFields(
+				{ name: `❯ Użycie komendy:`, value: `!eq\n!eq sell 34` },
+				{ name: `❯ Argumenty:`, value: `sell` },
+				{ name: `❯ Aliasy:`, value: `!ekwipunek, !inventory, !inv` }
+			)
+			.setImage(`https://ttvu.link/og-default.png`)
+			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+			.setTimestamp()
+
+		return { embeds: [embed] };
 	}
 
 	// //Sell Items

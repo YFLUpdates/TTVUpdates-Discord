@@ -5,6 +5,8 @@ import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
+import { EmbedBuilder } from 'discord.js'
+
 const checkClean = (arg) => {
   if (['lista', 'list', 'szansa', 'chance'].includes(arg)) {
     return null
@@ -22,41 +24,63 @@ export default async function commandCase(msg, argumentClean, args) {
 
   const discordID = msg.author.id;
 
+  if (['info'].includes(argumentClean)) {
+		const embed = new EmbedBuilder()
+			.setColor(8086271)
+			.setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+			.setDescription('**Opis:** Otwieranie skrzynek')
+			.setThumbnail(`https://ttvu.link/logo512.png`)
+			.addFields(
+				{ name: `❯ Użycie komendy:`, value: `!case snake\n!case chance snake\n!case lista snake` },
+				{ name: `❯ Argumenty:`, value: `**Skrzynki:** snake, nightmare, riptide, cobble, huntsman, legend14, chall14.\n**Inne:** chance, szansa, lista, list`},
+				{ name: `❯ Aliasy:`, value: `!skrzynka, !skrzynia, !crate` }
+			)
+			.setImage(`https://ttvu.link/og-default.png`)
+			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+			.setTimestamp()
+
+		return { embeds: [embed] };
+	}
+
   if (!argumentClean) {
-    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman. Inne argumenty: szansa, lista (np. !case chance snake).`;
+    return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman, legend14, chall14. Inne argumenty: szansa, lista (np. !case chance snake).`;
   }
 
   if (["szansa", "chance"].includes(argumentClean)) {
     if (args.length < 2 || !args[1]) {
-      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
+      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman, legend14, chall14.`;
     }
 
     const nameCase = args[1];
 
-    if (["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
+    if (["nightmare", "riptide", "snake", "huntsman"].includes(nameCase)) {
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [53.73%], 🟦 [22.67%], 🟪 [12.3%], 🟥 [8.6%], 🟨 [2.7%]`;
     }
-    // else if ("cobble".includes(nameCase)) {
-    //   return `<@${discordID}>, Szansa na drop: ⬜ [56%], 🟦 [26%], 🟪 [13%], 🟥 [4%], 🟨 [1%]`;
-    // }
+    else if (["cobble"].includes(nameCase)) {
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [57.2%], 🟦 [25.8%], 🟪 [13.8%], 🟥 [2.19%], 🟨 [1.01%]`;
+    }
+    else if (["legend14", "chall14"].includes(nameCase)) {
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: 🟦 [70.45%], 🟪 [3.04%], 🟥 [26.51%]`;
+    }
   }
 
-  if(["lista", "list"].includes(argumentClean)) {
-    if(args.length < 2 || !args[1]) {
-      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman.`;
+
+  if (["lista", "list"].includes(argumentClean)) {
+    if (args.length < 2 || !args[1]) {
+      return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman, legend14, chall14.`;
     }
 
-    const nameCase = args[1];
+    const nameCase = args[1]
 
-    if(["nightmare", "riptide", "snake", "huntsman", "cobble"].includes(nameCase)) {
+    if (["nightmare", "riptide", "snake", "huntsman", "cobble", "legend14", "chall14"].includes(nameCase)) {
       return `<@${discordID}>, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
     }
   }
   
   const data = cases[checkClean(argumentClean) || args[1]];
 
-  if(!["nightmare", "riptide", "snake", "cobble", "huntsman"].includes(argumentClean)){
-    return `<@${discordID}>}, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
+  if (!["nightmare", "riptide", "snake", "cobble", "huntsman", "legend14", "chall14"].includes(argumentClean)) {
+    return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
   
   const userInfo = await getPoints(discordID, "adrian1g__");
