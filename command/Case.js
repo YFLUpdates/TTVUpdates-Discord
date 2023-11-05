@@ -54,13 +54,13 @@ export default async function commandCase(msg, argumentClean, args) {
     const nameCase = args[1];
 
     if (["nightmare", "riptide", "snake", "huntsman"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [53.73%], 🟦 [22.67%], 🟪 [12.3%], 🟥 [8.6%], 🟨 [2.7%]`;
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [55.23%], 🟦 [25.44%], 🟪 [10.68%], 🟥 [7.29%], 🟨 [1.33%]`;
     }
     else if (["cobble"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [57.2%], 🟦 [25.8%], 🟪 [13.8%], 🟥 [2.19%], 🟨 [1.01%]`;
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [57.2%], 🟦 [26.55%], 🟪 [13.87%], 🟥 [1.96%], 🟨 [0.42%]`;
     }
     else if (["legend14", "chall14"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop - ${nameCase}: 🟦 [70.45%], 🟪 [3.04%], 🟥 [26.51%]`;
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: 🟦 [71.93%], 🟪 [1.52%], 🟥 [26.55%]`;
     }
   }
 
