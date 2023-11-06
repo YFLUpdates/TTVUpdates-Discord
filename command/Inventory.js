@@ -43,8 +43,8 @@ export default async function commandInventory(msg, argumentClean, args) {
 			.setDescription('**Opis:** Pokazuje co udało Ci się zdobyć oraz pozwala sprzedać itemy.')
 			.setThumbnail(`https://ttvu.link/logo512.png`)
 			.addFields(
-				{ name: `❯ Użycie komendy:`, value: `!eq\n!eq sell 34` },
-				{ name: `❯ Argumenty:`, value: `sell` },
+				{ name: `❯ Użycie komendy:`, value: `!eq\n!eq 3xanax\n!eq sell 34\n!eq trade 69 3xanax` },
+				{ name: `❯ Argumenty:`, value: `user, sell, trade, id` },
 				{ name: `❯ Aliasy:`, value: `!ekwipunek, !inventory, !inv` }
 			)
 			.setImage(`https://ttvu.link/og-default.png`)
@@ -69,7 +69,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 		const points = await getPoints(discordID, "adrian1g__");
 
 		if (points === null || points.points === null) {
-			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
+			return `<@${discordID}>, najprawdopodobniej nie połączyłeś konta. Zrób to za pomoca wpisania ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
 		}
 
 		const itemInfo = await getItem(points.user_login, itemID);
