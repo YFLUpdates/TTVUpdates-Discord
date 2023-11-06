@@ -1,5 +1,6 @@
 import GetInventory from '../requests/getInventory.js'
 import DeleteItem from '../requests/DeleteItem.js'
+import CreateItem from '../requests/CreateItem.js'
 import gambleUpdate from '../requests/gambleUpdate.js'
 import getItem from '../requests/getItem.js'
 import getPoints from '../requests/getPoints.js';
@@ -34,7 +35,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 			.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
 			.join()} - pełna rozpiska na https://ttvu.link/${points.user_login}`
 	}
-	
+
 	if (['info'].includes(argumentClean)) {
 		const embed = new EmbedBuilder()
 			.setColor(8086271)
@@ -51,6 +52,49 @@ export default async function commandInventory(msg, argumentClean, args) {
 			.setTimestamp()
 
 		return { embeds: [embed] };
+	}
+
+	//Trade item
+	if (['trade'].includes(argumentClean)) {
+		if (!args || args.length < 2) {
+			return `<@${discordID}>, zapomniałeś/aś o ID przedmiotu.`
+		}
+
+		if (!args || args.length < 3) {
+			return `<@${discordID}>, zapomniałeś/aś o nicku osoby.`
+		}
+
+		const itemID = args[1];
+		const tradeTo = args[2];
+		const points = await getPoints(discordID, "adrian1g__");
+
+		if (points === null || points.points === null) {
+			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
+		}
+
+		const itemInfo = await getItem(points.user_login, itemID);
+		if (itemInfo === null) {
+			return `<@${discordID}>, nie posiadasz przedmiotu o takim ID.`
+		}
+
+		const removeItem = await DeleteItem(points.user_login, itemID);
+		if (removeItem === null) {
+			return `<@${discordID}>, nie udało się sprzedać przedmiotu.`
+		}
+
+		const addItem = await CreateItem(
+			tradeTo,
+			itemInfo.item,
+			itemInfo.price,
+			itemInfo.img,
+			"adrian1g__",
+		)
+
+		if (addItem === null) {
+			return `<@${discordID}>, błąd podczas dodawania przedmiotu odbierającemu, skontaktuj się z administratorem.`
+		}
+
+		return `<@${discordID}>, ${itemInfo.item} (${compactNumber(itemInfo.price)} pkt) [id: ${itemInfo.id}] został przesłany do ${tradeTo}.`
 	}
 
 	// //Sell Items
@@ -92,7 +136,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 	}
 
 	return `<@${discordID}>, ${argumentClean} posiada w swoim ekwipunku: ${viewer
-		.slice(0, 0)
-		.map(e => `${e.item} (${Intl.NumberFormat('en', { notation: 'compact' }).format(e.price)} pkt) [id: ${e.id}]`)
+		.slice(0, 1)
+		.map(e => `${e.item} (${compactNumber(e.price)} pkt) [id: ${e.id}]`)
 		.join()} - pełna rozpiska na https://ttvu.link/${argumentClean}`
 }
