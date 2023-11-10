@@ -79,7 +79,7 @@ export default async function commandInventory(msg, argumentClean, args) {
 
 		const removeItem = await DeleteItem(points.user_login, itemID);
 		if (removeItem === null) {
-			return `<@${discordID}>, nie udało się sprzedać przedmiotu.`
+			return `<@${discordID}>, nie udało się przesłać przedmiotu.`
 		}
 
 		const addItem = await CreateItem(
