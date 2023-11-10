@@ -17,8 +17,22 @@ export default async function commandSlots(msg, argumentClean) {
     return `<@${discordID}>, zapomniałeś/aś o kwocie `;
   }
 
-  if (argumentClean === "info") {
-		return `<@${discordID}>, ${slotsInfo}`;
+  if (['info'].includes(argumentClean)) {
+		const embed = new EmbedBuilder()
+			.setColor(8086271)
+			.setAuthor({ name: `Komenda - Slots`, iconURL: `https://ttvu.link/logo512.png` })
+			.setDescription('**Opis:** Proste slotsy na 3 rolki')
+			.setThumbnail(`https://ttvu.link/logo512.png`)
+			.addFields(
+				{ name: `❯ Użycie komendy:`, value: `!slots 100\n!slots procenty` },
+				{ name: `❯ Argumenty:`, value: `kwota, procenty` },
+				{ name: `❯ Aliasy:`, value: `!slot, !sloty` }
+			)
+			.setImage(`https://ttvu.link/og-default.png`)
+			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+			.setTimestamp()
+
+		return msg.channel.send({ embeds: [embed] })
 	}
 
   if (argumentClean === "procenty") {
