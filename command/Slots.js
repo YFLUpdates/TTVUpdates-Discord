@@ -4,6 +4,8 @@ import { runSlots } from "../functions/slots/slots.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import getPoints from "../requests/getPoints.js";
 
+import { EmbedBuilder } from "discord.js";
+
 export default async function commandSlots(msg, argumentClean) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
 
@@ -18,22 +20,22 @@ export default async function commandSlots(msg, argumentClean) {
   }
 
   if (['info'].includes(argumentClean)) {
-		const embed = new EmbedBuilder()
-			.setColor(8086271)
-			.setAuthor({ name: `Komenda - Slots`, iconURL: `https://ttvu.link/logo512.png` })
-			.setDescription('**Opis:** Proste slotsy na 3 rolki')
-			.setThumbnail(`https://ttvu.link/logo512.png`)
-			.addFields(
-				{ name: `❯ Użycie komendy:`, value: `!slots 100\n!slots procenty` },
-				{ name: `❯ Argumenty:`, value: `kwota, procenty` },
-				{ name: `❯ Aliasy:`, value: `!slot, !sloty` }
-			)
-			.setImage(`https://ttvu.link/og-default.png`)
-			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
-			.setTimestamp()
+    const embed = new EmbedBuilder()
+      .setColor(8086271)
+      .setAuthor({ name: `Komenda - Slots`, iconURL: `https://ttvu.link/logo512.png` })
+      .setDescription('**Opis:** Proste slotsy na 3 rolki')
+      .setThumbnail(`https://ttvu.link/logo512.png`)
+      .addFields(
+        { name: `❯ Użycie komendy:`, value: `!slots 100\n!slots procenty` },
+        { name: `❯ Argumenty:`, value: `kwota, procenty` },
+        { name: `❯ Aliasy:`, value: `!slot, !sloty` }
+      )
+      .setImage(`https://ttvu.link/og-default.png`)
+      .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+      .setTimestamp()
 
-		return msg.channel.send({ embeds: [embed] })
-	}
+    return msg.channel.send({ embeds: [embed] })
+  }
 
   if (argumentClean === "procenty") {
     return `<@${discordID}>, ${slotsPercentage}`;
