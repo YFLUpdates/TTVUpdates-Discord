@@ -4,6 +4,7 @@ import CreateItem from '../requests/CreateItem.js'
 import gambleUpdate from '../requests/gambleUpdate.js'
 import getItem from '../requests/getItem.js'
 import getPoints from '../requests/getPoints.js';
+import WipeInventory from '../requests/WipeInventory.js';
 
 import { EmbedBuilder } from "discord.js";
 
@@ -96,20 +97,72 @@ export default async function commandInventory(msg, argumentClean, args) {
 
 		return `<@${discordID}>, ${itemInfo.item} (${compactNumber(itemInfo.price)} pkt) [id: ${itemInfo.id}] został przesłany do ${tradeTo}.`
 	}
+	
 
 	// //Sell Items
 	if (['sell', 'sprzedaj'].includes(argumentClean)) {
 		if (!args || args.length < 2) {
 			return `<@${discordID}>, zapomniałeś/aś o ID przedmiotu.`
 		}
-
-		const itemID = args[1];
+		
 		const points = await getPoints(discordID, "adrian1g__");
 
 		if (points === null || points.points === null) {
 			return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
 		}
 
+    ///////////////////////////
+        ///////////////////////////
+            ///////////////////////////
+        ///////////////////////////
+    ///////////////////////////
+
+
+    if (args[1] === "all") {
+		const getItems = await GetInventory(points.user_login, "adrian1g__")
+		if (getItems === null) {
+		  return `<@${discordID}>, Twój ekwipunek jest pusty`
+		}
+  
+		const result = getItems.reduce((acc, item) => {
+		  acc.ids.push(item.id);
+		  acc.totalPrices += item.price;
+		  return acc;
+		}, { ids: [], totalPrices: 0 });
+  
+		if(!result.totalPrices || result.totalPrices && isNaN(Number(result.totalPrices))){
+			console.log("here")
+		  return `<@${discordID}>, nie udało się sprzedać przedmiotów.`;
+		}
+  
+  
+		const removeItem = await WipeInventory(points.user_login, result.ids);
+		if (removeItem === null) {
+			console.log("not here")
+		  return `<@${discordID}>, nie udało się sprzedać przedmiotów.`;
+		}
+  
+		const updatePoints = await gambleUpdate(
+		  "adrian1g__",
+		  `+${result.totalPrices}`,
+		  points.user_login
+		);
+  
+		if (updatePoints === null) {
+		  return `<@${discordID}>, błąd podczas aktualizowania punktów, skontaktuj się z administratorem.`;
+		}
+  
+		return `<@${discordID}>, sprzedałeś wszystkie itemy za ${compactNumber(result.totalPrices)} pkt`
+	  }
+  
+  
+	  ///////////////////////////
+		  ///////////////////////////
+			  ///////////////////////////
+		  ///////////////////////////
+	  ///////////////////////////
+
+		const itemID = args[1];
 		const itemInfo = await getItem(points.user_login, itemID);
 		if (itemInfo === null) {
 			return `<@${discordID}>, nie posiadasz przedmiotu o takim ID.`

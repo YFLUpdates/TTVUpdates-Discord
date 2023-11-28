@@ -66,7 +66,7 @@ export default async function commandCase(msg, argumentClean, args) {
   }
 
 
-  if (["info"].includes(argumentClean)) {
+  if (["lista", "list", "info"].includes(argumentClean)) {
     if (args.length < 2 || !args[1]) {
       return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman, legend14, chall14.`;
     }

@@ -19,6 +19,10 @@ export default async function commandSlots(msg, argumentClean) {
     return `<@${discordID}>, zapomniałeś/aś o kwocie `;
   }
 
+  if (argumentClean === "oginfo") {
+		return `<@${discordID}>, ${slotsInfo}`;
+	}
+
   if (['info'].includes(argumentClean)) {
     const embed = new EmbedBuilder()
       .setColor(8086271)
@@ -34,7 +38,7 @@ export default async function commandSlots(msg, argumentClean) {
       .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
       .setTimestamp()
 
-    return msg.channel.send({ embeds: [embed] })
+    return { embeds: [embed] };
   }
 
   if (argumentClean === "procenty") {

@@ -229,7 +229,7 @@ export const losingMessages = [
   `#STOPZHAZARDEM serio ${aok} `,
 ];
 
-// export const slotsInfo = `Proste slotsy na 3 rolki autorstwa lepszego programisty - ziomiwan ${hm}. Maksymalny możliwy win - x777. Najprawdopodobniej bedziecie na - jak w prawdziwych slotsach ${hehe}. Nie ponosze odpowiedzialności za stracone punkty ${aok}. Wszystkie szanse na wygrana otestowane i zatwierdzone przez największa hazardzistke - <@632307504063447040> także wszelkie zażalenia odnośnie dropu proszę kierować do niej ${aok}.`;
+export const slotsInfo = `Proste slotsy na 3 rolki autorstwa lepszego programisty - ziomiwan ${hm}. Maksymalny możliwy win - x777. Najprawdopodobniej bedziecie na - jak w prawdziwych slotsach ${hehe}. Nie ponosze odpowiedzialności za stracone punkty ${aok}. Wszystkie szanse na wygrana otestowane i zatwierdzone przez największa hazardzistke - <@632307504063447040> także wszelkie zażalenia odnośnie dropu proszę kierować do niej ${aok}.`;
 
 export const slotsPercentage = `siedem, siedem, siedem, 
 mnożnik: x777
