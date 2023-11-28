@@ -324,7 +324,7 @@ export const cases = {
         },
         "blue": {
             "from": 57.21,
-            "to": 83.75,
+            "to": 83.84,
             "skins": [
                 {"name": "MAG-7 | Srebro", "price": 1223, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_mag7_an_silver_light.png"},
                 {"name": "Nova | Zielone jabłuszko", "price": 1186, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_nova_so_green_light.png"},
@@ -335,24 +335,24 @@ export const cases = {
             ]
         },
         "purple": {
-            "from": 83.76,
-            "to": 97.62,
+            "from": 84.17,
+            "to": 98.03,
             "skins": [
                 {"name": "CZ75-Auto | Kielich", "price": 42835, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_cz75a_am_royal_light.png"},
                 {"name": "Desert Eagle | Działo ręczne", "price": 44517, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_deagle_aq_handcannon_light.png"}
             ]
         },
         "red": {
-            "from": 97.63,
-            "to": 99.58,
+            "from": 98.04,
+            "to": 100,
             "skins": [
                 {"name": "M4A1-S | Rycerz", "price": 287300, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_silencer_am_metals_light.png"},
                 {"name": "Souvenir M4A1-S | Rycerz", "price": 161100, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_m4a1_silencer_am_metals_light.png"}
             ]
         },
         "gold": {
-            "from": 99.59,
-            "to": 100.00,
+            "from": 83.85,
+            "to": 84.16,
             "skins": [
                 {"name": "AWP | Smocza wiedza", "price": 1207400, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"},
                 {"name": "Souvenir AWP | Smocza wiedza", "price": 12810100, "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_awp_cu_medieval_dragon_awp_light.png"}            

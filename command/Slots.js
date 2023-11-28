@@ -4,6 +4,8 @@ import { runSlots } from "../functions/slots/slots.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import getPoints from "../requests/getPoints.js";
 
+import { EmbedBuilder } from "discord.js";
+
 export default async function commandSlots(msg, argumentClean) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
 
@@ -17,9 +19,27 @@ export default async function commandSlots(msg, argumentClean) {
     return `<@${discordID}>, zapomniałeś/aś o kwocie `;
   }
 
-  if (argumentClean === "info") {
+  if (argumentClean === "oginfo") {
 		return `<@${discordID}>, ${slotsInfo}`;
 	}
+
+  if (['info'].includes(argumentClean)) {
+    const embed = new EmbedBuilder()
+      .setColor(8086271)
+      .setAuthor({ name: `Komenda - Slots`, iconURL: `https://ttvu.link/logo512.png` })
+      .setDescription('**Opis:** Proste slotsy na 3 rolki')
+      .setThumbnail(`https://ttvu.link/logo512.png`)
+      .addFields(
+        { name: `❯ Użycie komendy:`, value: `!slots 100\n!slots procenty` },
+        { name: `❯ Argumenty:`, value: `kwota, procenty` },
+        { name: `❯ Aliasy:`, value: `!slot, !sloty` }
+      )
+      .setImage(`https://ttvu.link/og-default.png`)
+      .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+      .setTimestamp()
+
+    return { embeds: [embed] };
+  }
 
   if (argumentClean === "procenty") {
     return `<@${discordID}>, ${slotsPercentage}`;
@@ -33,7 +53,7 @@ export default async function commandSlots(msg, argumentClean) {
   const points = await getPoints(discordID, "adrian1g__");
 
   if (points === null || points.points === null) {
-    return `<@${discordID}> najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
+    return `<@${discordID}>, najprawdopodobniej nie połączyłeś konta. Zrób to za pomoca wpisania ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
 
   if (betPoints > points.points) {

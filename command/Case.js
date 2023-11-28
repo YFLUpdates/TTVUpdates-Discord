@@ -5,6 +5,7 @@ import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
+import { aha } from "../functions/slots/data/discordEmotes.js";
 import { EmbedBuilder } from 'discord.js'
 
 const checkClean = (arg) => {
@@ -57,7 +58,7 @@ export default async function commandCase(msg, argumentClean, args) {
       return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [55.23%], 🟦 [25.44%], 🟪 [10.68%], 🟥 [7.29%], 🟨 [1.33%]`;
     }
     else if (["cobble"].includes(nameCase)) {
-      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [57.2%], 🟦 [26.55%], 🟪 [13.87%], 🟥 [1.96%], 🟨 [0.42%]`;
+      return `<@${discordID}>, Szansa na drop - ${nameCase}: ⬜ [57.2%], 🟦 [26.64%], 🟪 [13.87%], 🟥 [1.97%], 🟨 [0.32%]`;
     }
     else if (["legend14", "chall14"].includes(nameCase)) {
       return `<@${discordID}>, Szansa na drop - ${nameCase}: 🟦 [71.93%], 🟪 [1.52%], 🟥 [26.55%]`;
@@ -65,7 +66,7 @@ export default async function commandCase(msg, argumentClean, args) {
   }
 
 
-  if (["lista", "list"].includes(argumentClean)) {
+  if (["lista", "list", "info"].includes(argumentClean)) {
     if (args.length < 2 || !args[1]) {
       return `<@${discordID}>, zapomniałeś/aś o nazwie skrzynki: nightmare, riptide, snake, cobble, huntsman, legend14, chall14.`;
     }
@@ -86,11 +87,11 @@ export default async function commandCase(msg, argumentClean, args) {
   const userInfo = await getPoints(discordID, "adrian1g__");
   
   if (userInfo === null || userInfo.points === null) {
-    return `<@${discordID}>, najprawdopodobniej nie połączyłeś bota ze swoim kontem ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
+    return `<@${discordID}>, najprawdopodobniej nie połączyłeś konta. Zrób to za pomoca wpisania ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
   
   if (data.cost > userInfo.points) {
-    return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów aha (masz ${userInfo.points} pkt)`;
+    return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów ${aha} (masz ${userInfo.points} pkt)`;
   }
 
   const rolledNumber = await rollColor();
