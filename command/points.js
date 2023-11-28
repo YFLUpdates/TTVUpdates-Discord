@@ -99,7 +99,7 @@ export default async function commandPoints(msg, argumentClean, args) {
   }
   
   if (argumentClean && argumentClean.length > 3) {
-    const points = await getPoints(argument, "adrian1g__", true);
+    const points = await getPoints(argumentClean, "adrian1g__", true);
 
     if(points === null || points.points === null){
       return `<@${discordID}>, nie udało się pobrać danych ${aha}`;
