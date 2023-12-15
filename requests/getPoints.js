@@ -11,7 +11,7 @@ export default async function getPoints(user, channelName, ttv) {
         .then(async (data) => {
             const res = data.data;
 
-            return { points: res.points === null ? null : res.points, user_login: res.user_login ? res.user_login : null };
+            return { points: res.points === null ? null : res.points, user_login: res.user_login ? res.user_login : null, ...res };
         })
         .catch(err => {
             // console.log(err)

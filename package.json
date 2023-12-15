@@ -32,6 +32,7 @@
         "humanize-duration": "^3.27.3",
         "jsdom": "^20.0.1",
         "mathjs": "^11.5.1",
+        "node-fetch": "^3.3.2",
         "nodemon": "^2.0.20",
         "prettier": "^2.8.5",
         "sha256": "^0.2.0"

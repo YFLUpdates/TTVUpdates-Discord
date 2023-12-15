@@ -7,5 +7,6 @@ import Roulette from "./Roulette.js";
 import Case from "./Case.js";
 import Inventory from "./Inventory.js"
 import Duel from './Duel.js'
+import Fish from './Fish.js'
 
-export { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel };
+export { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel, Fish };

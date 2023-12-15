@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, GatewayIntentBits, ActivityType } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
-import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel } from "./command/index.js";
+import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel, Fish } from "./command/index.js";
 
 dotenv.config();
 
@@ -257,6 +257,25 @@ client.on("messageCreate", async (msg) => {
 
 
       msg.channel.send({ embeds: [embed] });
+
+      break;
+    }
+    case 'fishing':
+    case 'fish':
+    case 'lowienie': {
+
+      if (cooldown > Date.now() - 5000) {
+        break;
+      }
+      cooldown = Date.now();
+
+      const command = await Fish(msg, argumentClean, args);
+
+      if (command === null) {
+        break;
+      }
+
+      msg.channel.send(command);
 
       break;
     }
