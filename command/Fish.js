@@ -35,14 +35,14 @@ export default async function commandFish(
     if (!argumentClean || ' 󠀀'.includes(argumentClean) || ' 󠀀'.includes(args[1])) {
 
         if (!userInfo.fishing_rod) {
-            return `<@${discordID}>, Nie posiadasz wędki! - !fishing rod upgrade -> https://blog.ttvu.link/posts/fishing`;
+            return `<@${discordID}>, Nie posiadasz wędki! Zakup za pomocą !fishing rod (Więcej na https://blog.ttvu.link/posts/fishing)`;
         }
         if (!userInfo.fishing_pass) {
-            return `<@${discordID}>, Nie posiadasz karnetu! - !fishing pass -> https://blog.ttvu.link/posts/fishing`;
+            return `<@${discordID}>, Nie posiadasz karnetu! Zakup za pomocą !fishing pass (Więcej na https://blog.ttvu.link/posts/fishing)`;
         }
 
         if (passDate < currentDate) {
-            return `<@${discordID}>, Twój karnet już się skończył, musisz kupić nowy aby dalej łowić.`;
+            return `<@${discordID}>, Twój karnet stracił ważność. Musisz kupić nowy, aby dalej łowić.`;
         }
 
         const currentTime = CurrentTimeOfTheDay();
@@ -87,7 +87,7 @@ export default async function commandFish(
 
         if (args.length < 2 || !args[1]) {
             if (!userInfo.fishing_rod) {
-                return `<@${discordID}>, Nie kupiłeś/aś jeszcze żadnej wędki. !fishing rod upgrade`;
+                return `<@${discordID}>, Aby zakupić/ulepszyć wędke, podaj argument: buy, upgrade`;
             }
 
             const currentRod = RodsList(userInfo.fishing_rod);
@@ -100,7 +100,7 @@ export default async function commandFish(
         }
 
         if (!["upgrade", "buy"].includes(args[1])) {
-            return `<@${discordID}>, Nieznany rodaj argumentu! Dostępne: upgrade`;
+            return `<@${discordID}>, Nieznany rodaj argumentu! Dostępne: buy, upgrade`;
         }
 
         const newRod = RodUpgrade(userInfo.fishing_rod);
@@ -147,7 +147,7 @@ export default async function commandFish(
         if (args.length < 2 || !args[1]) {
 
             if (!userInfo.fishing_pass) {
-                return `<@${discordID}>, Nie kupiłeś/aś jeszcze żadnego karnetu. !fishing pass {30min/1hour/2hour}`;
+                return `<@${discordID}>, Nie kupiłeś/aś jeszcze żadnego karnetu. !fishing pass [30m/1h/2h]`;
             }
 
             if (passDate < currentDate) {
@@ -159,8 +159,8 @@ export default async function commandFish(
             return `<@${discordID}>, Twój karnet wygasa za: ${humanizeDuration(Math.round(timeDifference), { language: "pl", round: true })}`;
         }
 
-        if (!["30min", "1hour", "2hour"].includes(args[1])) {
-            return `<@${discordID}>, Nieznany typ karnetu! Dostępne: 30min, 1hour, 2hour`;
+        if (!["30min", "30m", "1hour", "1h", "2hour", "2h"].includes(args[1])) {
+            return `<@${discordID}>, Nieznany typ karnetu! Dostępne: 30m, 1h, 2h`;
         }
 
         if (!userInfo.fishing_rod) {
