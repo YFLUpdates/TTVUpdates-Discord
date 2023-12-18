@@ -191,7 +191,7 @@ export default async function commandFish(
 
         const timeDifference = getNewPassTime.date.getTime() - currentDate.getTime();
 
-        return `<@${discordID}>, Pomyślnie udało ci się kupić karnet "${args[1]}", Pozostały czas: ${humanizeDuration(Math.round(timeDifference), { language: "pl", round: true })}`;
+        return `<@${discordID}>, Pomyślnie udało ci się kupić karnet "${args[1]}". Pozostały czas: ${humanizeDuration(Math.round(timeDifference), { language: "pl", round: true })}`;
     }
 
     return `<@${discordID}>, Nieznany argument. Dostępne: pass, rod, info`;
