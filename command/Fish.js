@@ -35,10 +35,10 @@ export default async function commandFish(
     if (!argumentClean || ' 󠀀'.includes(argumentClean) || ' 󠀀'.includes(args[1])) {
 
         if (!userInfo.fishing_rod) {
-            return `<@${discordID}>, Nie posiadasz wędki! Zakup za pomocą !fishing rod (Więcej na https://blog.ttvu.link/posts/fishing)`;
+            return `<@${discordID}>, Nie posiadasz wędki! Zakup za pomocą !fishing rod ( Więcej na https://blog.ttvu.link/posts/fishing )`;
         }
         if (!userInfo.fishing_pass) {
-            return `<@${discordID}>, Nie posiadasz karnetu! Zakup za pomocą !fishing pass (Więcej na https://blog.ttvu.link/posts/fishing)`;
+            return `<@${discordID}>, Nie posiadasz karnetu! Zakup za pomocą !fishing pass ( Więcej na https://blog.ttvu.link/posts/fishing )`;
         }
 
         if (passDate < currentDate) {
