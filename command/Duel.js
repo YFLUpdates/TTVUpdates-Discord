@@ -134,6 +134,11 @@ export default async function commandDuel(msg, argumentClean, args, duels_list) 
   }
 
   const userInfo = await userData(discordID, "adrian1g__");
+  const duoInfo = await userData(argumentClean, "adrian1g__")
+
+  if (betPoints > duoInfo.points) {
+    return `<@${discordID}>, @${duoInfo.user_login} nie ma tylu punktów aha`
+  }
 
   if (betPoints > userInfo.points) {
     return `<@${discordID}> nie masz tylu punktów aha `;

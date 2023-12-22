@@ -74,6 +74,11 @@ export default async function commandPoints(msg, argumentClean, args) {
     }
       
     const receiver = args[1].toLowerCase();
+
+    if(receiver === discordID) {
+      return `<@${discordID}>, nie możesz sobie samemu przesłać punktów.`
+    }
+
     const betPoints = Number(args[2]);
     const points = await getPoints(discordID, "adrian1g__");
 
