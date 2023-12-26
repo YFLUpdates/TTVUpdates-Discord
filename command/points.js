@@ -74,11 +74,16 @@ export default async function commandPoints(msg, argumentClean, args) {
     }
       
     const receiver = args[1].toLowerCase();
+
     const betPoints = Number(args[2]);
     const points = await getPoints(discordID, "adrian1g__");
 
     if (points === null || points.points === null) {
       return `<@${discordID}>, najprawdopodobniej nie połączyłeś konta. Zrób to za pomoca wpisania ${"`!connectdc "+discordID+"`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
+    }
+
+    if(receiver === points.user_login) {
+      return `<@${discordID}>, nie możesz sobie samemu przesłać punktów.`
     }
 
     if (betPoints > points.points) {

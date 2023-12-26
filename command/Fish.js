@@ -1,5 +1,6 @@
 import CreateItem from "../requests/CreateItem.js";
 import humanizeDuration from "humanize-duration";
+import { EmbedBuilder } from "discord.js";
 
 import userData from "../requests/getPoints.js";
 import pointsToVoid from "../requests/gambleUpdate.js";
@@ -35,10 +36,10 @@ export default async function commandFish(
     if (!argumentClean || ' 󠀀'.includes(argumentClean) || ' 󠀀'.includes(args[1])) {
 
         if (!userInfo.fishing_rod) {
-            return `<@${discordID}>, Nie posiadasz wędki! Zakup za pomocą !fishing rod (Więcej na https://blog.ttvu.link/posts/fishing)`;
+            return `<@${discordID}>, Nie posiadasz wędki! Zakup za pomocą !fishing rod ( Więcej na https://blog.ttvu.link/posts/fishing )`;
         }
         if (!userInfo.fishing_pass) {
-            return `<@${discordID}>, Nie posiadasz karnetu! Zakup za pomocą !fishing pass (Więcej na https://blog.ttvu.link/posts/fishing)`;
+            return `<@${discordID}>, Nie posiadasz karnetu! Zakup za pomocą !fishing pass ( Więcej na https://blog.ttvu.link/posts/fishing )`;
         }
 
         if (passDate < currentDate) {
@@ -76,7 +77,21 @@ export default async function commandFish(
             return `<@${discordID}>, błąd podczas dodawania ryby do ekwipunku, skontaktuj się z administratorem.`;
         }
 
-        return `<@${discordID}>, Złapałeś/aś rybe: [${CatchedFish.rarity}] ${CatchedFish.name} ($${fishPrice}) (Ekwipunek: !eq)`;
+        const embed = new EmbedBuilder()
+            .setColor(8086271)
+            .setAuthor({ name: userInfo.user_login, iconURL: `https://cdn.discordapp.com/avatars/${discordID}/${msg.author.avatar}.png?size=256`})
+            .setDescription(`Złapałeś/aś **${CatchedFish.name}**`)
+            .addFields(
+                { name: `Rzadkość: `, value: `${CatchedFish.rarity}` },
+                { name: `Cena: `, value: `$${fishPrice}` },
+            )
+            .setImage(CatchedFish.image)
+            .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+            .setTimestamp();
+
+        return { embeds: [embed] };
+
+        // return `<@${discordID}>, Złapałeś/aś rybe: [${CatchedFish.rarity}] ${CatchedFish.name} ($${fishPrice}) (Ekwipunek: !eq)`;
     }
 
     if (["info", "pomoc"].includes(argumentClean)) {
