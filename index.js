@@ -235,17 +235,17 @@ client.on("messageCreate", async (msg) => {
 
       break;
     }
-    case 'daily': {
-      const command = await Daily(msg, argumentClean)
+    // case 'daily': {
+    //   const command = await Daily(msg, argumentClean)
 
-      if (command === null) {
-        break;
-      }
+    //   if (command === null) {
+    //     break;
+    //   }
 
-      msg.channel.send(command);
+    //   msg.channel.send(command);
 
-      break;
-    }
+    //   break;
+    // }
     case 'pomoc':
     case 'help': {
       const embed = new EmbedBuilder()
@@ -275,7 +275,7 @@ client.on("messageCreate", async (msg) => {
     case 'fish':
     case 'lowienie': {
 
-      if (cooldown > Date.now() - 5000) {
+      if (cooldown > Date.now() - 3000) {
         break;
       }
       cooldown = Date.now();
