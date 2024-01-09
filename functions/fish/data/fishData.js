@@ -683,6 +683,12 @@ export const cases = {
         "list_of_fish": {
             "very_low": [
                 {
+                    "name": "Puszka",
+                    "from_price": 1,
+                    "to_price": 5,
+                    "image": "https://public.ttvu.link/public/puszka.png"
+                },
+                {
                     "name": "Common Shiner",
                     "from_price": 25,
                     "to_price": 29,
@@ -1055,6 +1061,18 @@ export const cases = {
                     "from_price": 175380,
                     "to_price": 213769,
                     "image": "https://public.ttvu.link/public/golden_fish.png"
+                },
+                {
+                    "name": "Sebastian",
+                    "from_price": 85380,
+                    "to_price": 243769,
+                    "image": "https://public.ttvu.link/public/sebastian.png"
+                },
+                {
+                    "name": "Oscar",
+                    "from_price": 190300,
+                    "to_price": 293769,
+                    "image": "https://public.ttvu.link/public/oscar.png"
                 }
             ]
         }

@@ -82,7 +82,7 @@ export default async function commandCase(msg, argumentClean, args) {
   if (!cases) {
     return `<@${discordID}>, nie udało sie pobrać danych o skrzynce`;
   }
-
+  
   const data = cases[checkClean(argumentClean) || args[1]];
 
   if (!["nightmare", "riptide", "snake", "cobble", "huntsman", "legend14", "chall14"].includes(argumentClean)) {
@@ -141,5 +141,4 @@ export default async function commandCase(msg, argumentClean, args) {
     .setTimestamp();
 
   return { embeds: [embed] };
-
 }
