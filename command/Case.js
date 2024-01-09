@@ -1,5 +1,5 @@
 import getPoints from "../requests/getPoints.js";
-import { cases } from "../functions/case/data/caseData.js";
+import ListOfCases from "../requests/TTVUpdates/ListOfCases.js";
 import rollColor from "../functions/case/skin.js";
 import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
@@ -15,6 +15,7 @@ const checkClean = (arg) => {
 
   return arg;
 }
+const cases = await ListOfCases();
 
 export default async function commandCase(msg, argumentClean, args) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
@@ -78,6 +79,10 @@ export default async function commandCase(msg, argumentClean, args) {
     }
   }
 
+  if (!cases) {
+    return `<@${discordID}>, nie udało sie pobrać danych o skrzynce`;
+  }
+  
   const data = cases[checkClean(argumentClean) || args[1]];
 
   if (!["nightmare", "riptide", "snake", "cobble", "huntsman", "legend14", "chall14"].includes(argumentClean)) {
