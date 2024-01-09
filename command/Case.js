@@ -1,5 +1,5 @@
 import getPoints from "../requests/getPoints.js";
-import {cases} from "../functions/case/data/caseData.js";
+import ListOfCases from "../requests/TTVUpdates/ListOfCases.js";
 import rollColor from "../functions/case/skin.js";
 import rollItem from "../functions/case/roll.js";
 import gambleUpdate from "../requests/gambleUpdate.js";
@@ -15,6 +15,7 @@ const checkClean = (arg) => {
 
   return arg;
 }
+const cases = await ListOfCases();
 
 export default async function commandCase(msg, argumentClean, args) {
   const gambleChannel = process.env.GAMBLE_CHANNEL;
@@ -26,22 +27,22 @@ export default async function commandCase(msg, argumentClean, args) {
   const discordID = msg.author.id;
 
   if (['info'].includes(argumentClean)) {
-		const embed = new EmbedBuilder()
-			.setColor(8086271)
-			.setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
-			.setDescription('**Opis:** Otwieranie skrzynek')
-			.setThumbnail(`https://ttvu.link/logo512.png`)
-			.addFields(
-				{ name: `❯ Użycie komendy:`, value: `!case snake\n!case chance snake\n!case lista snake` },
-				{ name: `❯ Argumenty:`, value: `**Skrzynki:** snake, nightmare, riptide, cobble, huntsman, legend14, chall14.\n**Inne:** chance, szansa, lista, list`},
-				{ name: `❯ Aliasy:`, value: `!skrzynka, !skrzynia, !crate` }
-			)
-			.setImage(`https://ttvu.link/og-default.png`)
-			.setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
-			.setTimestamp()
+    const embed = new EmbedBuilder()
+      .setColor(8086271)
+      .setAuthor({ name: `Komenda - Case`, iconURL: `https://ttvu.link/logo512.png` })
+      .setDescription('**Opis:** Otwieranie skrzynek')
+      .setThumbnail(`https://ttvu.link/logo512.png`)
+      .addFields(
+        { name: `❯ Użycie komendy:`, value: `!case snake\n!case chance snake\n!case lista snake` },
+        { name: `❯ Argumenty:`, value: `**Skrzynki:** snake, nightmare, riptide, cobble, huntsman, legend14, chall14.\n**Inne:** chance, szansa, lista, list` },
+        { name: `❯ Aliasy:`, value: `!skrzynka, !skrzynia, !crate` }
+      )
+      .setImage(`https://ttvu.link/og-default.png`)
+      .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+      .setTimestamp()
 
-		return { embeds: [embed] };
-	}
+    return { embeds: [embed] };
+  }
 
   if (!argumentClean) {
     return `<@${discordID}>, Dostępne skrzynki: nightmare, riptide, snake, cobble, huntsman, legend14, chall14. Inne argumenty: szansa, lista (np. !case chance snake).`;
@@ -77,19 +78,23 @@ export default async function commandCase(msg, argumentClean, args) {
       return `<@${discordID}>, Lista skinów ${nameCase}: https://ttvu.link/dashboard/cases/${nameCase}`
     }
   }
-  
+
+  if (!cases) {
+    return `<@${discordID}>, nie udało sie pobrać danych o skrzynce`;
+  }
+
   const data = cases[checkClean(argumentClean) || args[1]];
 
   if (!["nightmare", "riptide", "snake", "cobble", "huntsman", "legend14", "chall14"].includes(argumentClean)) {
     return `<@${discordID}>, Nie jesteśmy w stanie rozpoznać tej skrzynki.`;
   }
-  
+
   const userInfo = await getPoints(discordID, "adrian1g__");
-  
+
   if (userInfo === null || userInfo.points === null) {
     return `<@${discordID}>, najprawdopodobniej nie połączyłeś konta. Zrób to za pomoca wpisania ${"`!connectdc " + discordID + "`"} na kanale [adrian1g__](https://twitch.tv/adrian1g__)`;
   }
-  
+
   if (data.cost > userInfo.points) {
     return `<@${discordID}>, nie masz tylu punktów, skrzynka ${argumentClean} kosztuje ${data.cost} punktów ${aha} (masz ${userInfo.points} pkt)`;
   }
@@ -123,5 +128,18 @@ export default async function commandCase(msg, argumentClean, args) {
     return `<@${discordID}>, błąd podczas dodawania przedmiotu, skontaktuj się z administratorem.`;
   }
 
-  return `<@${discordID}>, Wylosowałeś/aś: [${skin.rarity}] ${skin.name} (Ekwipunek: !eq)`;
+  const embed = new EmbedBuilder()
+    .setColor(8086271)
+    .setAuthor({ name: userInfo.user_login, iconURL: `https://cdn.discordapp.com/avatars/${discordID}/${msg.author.avatar}.png?size=256` })
+    .setDescription(`Wylosowałeś/aś **${skin.name}**`)
+    .addFields(
+      { name: `Rzadkość: `, value: `${skin.rarity}` },
+      { name: `Cena: `, value: `$${skin.price}` },
+    )
+    .setImage(skin.image)
+    .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
+    .setTimestamp();
+
+  return { embeds: [embed] };
+
 }
