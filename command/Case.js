@@ -1,7 +1,6 @@
 import getPoints from "../requests/getPoints.js";
 import ListOfCases from "../requests/TTVUpdates/ListOfCases.js";
-import rollColor from "../functions/case/skin.js";
-import rollItem from "../functions/case/roll.js";
+import { GetQuality, rollItem, rollColor, SkinPriceRoll } from '../functions/case/index.js'
 import gambleUpdate from "../requests/gambleUpdate.js";
 import CreateItem from "../requests/CreateItem.js";
 
@@ -101,10 +100,12 @@ export default async function commandCase(msg, argumentClean, args) {
 
   const rolledNumber = await rollColor();
   const skin = rollItem(data, rolledNumber);
-
   if (skin === null) {
     return `<@${discordID}>, błąd podczas losowania przedmiotu.`;
   }
+
+  const SkinPrice = SkinPriceRoll(skin.min_price, skin.max_price)
+  const SkinQuality = GetQuality(SkinPrice, skin.max_price)
 
   const updatePoints = await gambleUpdate(
     "adrian1g__",
@@ -118,8 +119,8 @@ export default async function commandCase(msg, argumentClean, args) {
 
   const addItem = await CreateItem(
     userInfo.user_login,
-    `[${skin.rarity}] ${skin.name}`,
-    skin.price,
+    `[${skin.rarity}] ${skin.name} ${SkinQuality}`,
+    SkinPrice,
     skin.image,
     "adrian1g__",
   )
@@ -133,8 +134,9 @@ export default async function commandCase(msg, argumentClean, args) {
     .setAuthor({ name: userInfo.user_login, iconURL: `https://cdn.discordapp.com/avatars/${discordID}/${msg.author.avatar}.png?size=256` })
     .setDescription(`Wylosowałeś/aś **${skin.name}**`)
     .addFields(
-      { name: `Rzadkość: `, value: `${skin.rarity}` },
-      { name: `Cena: `, value: `$${skin.price}` },
+      { name: `❯ Rzadkość: `, value: `${skin.rarity}` },
+      { name: `❯ Cena: `, value: `${SkinPrice}` },
+      { name: `❯ Jakość: `, value: `${SkinQuality}` }
     )
     .setImage(skin.image)
     .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
