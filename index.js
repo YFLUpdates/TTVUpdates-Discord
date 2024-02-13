@@ -260,7 +260,7 @@ client.on("messageCreate", async (msg) => {
           { name: `❯ !roulette [red/black/green/blue/orange] {kwota}`, value: `Postaw na kolor który wyleci` },
           { name: `❯ !slots {kwota}`, value: `Proste slotsy na 3 rolki` },
           { name: `❯ !points [user/ranking/send] {user} {kwota}`, value: `Pokazuje liczbe punktów oraz pozwala zrobić transfer punktów` },
-          { name: `❯ !cmd [info]`, value: `Pokazuje informacje o komendzie` },
+          { name: `❯ !<nazwa_cmd> info`, value: `Pokazuje informacje o komendzie (np. !eq info, !case info)` },
         )
         .setImage(`https://ttvu.link/og-default.png`)
         .setFooter({ text: `TTVUpdates - Discord Port`, iconURL: `https://ttvu.link/logo512.png` })
