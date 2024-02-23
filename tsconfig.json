@@ -23,4 +23,4 @@
 	"include": ["src/**/*", "tests/**/*"],
 	"exclude": ["node_modules", ".vscode"],
 	"lib": ["es2021"]
-  }
+}
