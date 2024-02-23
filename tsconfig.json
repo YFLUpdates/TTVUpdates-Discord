@@ -1,26 +1,26 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
-		"module": "esnext",
-		"esModuleInterop": true,
-		"target": "es2021",
-		"moduleResolution": "node",
-		"pretty": true,
-		"sourceMap": true,
-		"outDir": "dist",
-		"baseUrl": "src",
-		"paths": {
-			"@root/*": ["*"],
-			"@apis/*": ["apis/*"],
-			"@components/*": ["components/*"],
-			"@database/*": ["database/*"],
-			"@functions/*": ["functions/*"],
-			"@utils/*": ["utils/*"],
-			"@interfaces/*": ["interfaces/*"],
-			"@commands/*": ["commands/*"]
-		}
+	  "allowJs": true,
+	  "module": "esnext",
+	  "esModuleInterop": true,
+	  "target": "es2021",
+	  "moduleResolution": "node",
+	  "pretty": true,
+	  "sourceMap": true,
+	  "outDir": "dist",
+	  "baseUrl": "src",
+	  "paths": {
+		"@root/*": ["*"],
+		"@apis/*": ["apis/*"],
+		"@components/*": ["components/*"],
+		"@database/*": ["database/*"],
+		"@functions/*": ["functions/*"],
+		"@utils/*": ["utils/*"],
+		"@interfaces/*": ["interfaces/*"],
+		"@commands/*": ["commands/*"]
+	  }
 	},
 	"include": ["src/**/*", "tests/**/*"],
 	"exclude": ["node_modules", ".vscode"],
 	"lib": ["es2021"]
-}
+  }
