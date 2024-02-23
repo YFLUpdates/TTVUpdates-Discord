@@ -1,7 +1,7 @@
 import { Client, EmbedBuilder, GatewayIntentBits, ActivityType } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
-import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel, Fish, Daily} from "./command/index.js";
+import { Dice, Buy, Slots, Zglos, Points, Roulette, Case, Inventory, Duel, Fish, Daily} from "./commands/index.js";
 
 dotenv.config();
 
